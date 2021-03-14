@@ -3,6 +3,9 @@
   "cli": {
 <<<<<<< HEAD
     "analytics": "2d3dc597-9116-468d-b93d-4296c609fde1"
+=======
+    "analytics": "7343d82b-d8fc-411f-b5db-c58961d32881"
+>>>>>>> f4fb70c221c7a291b16ee3554a0dc79b8fd64d6d
   },
   "version": 1,
   "newProjectRoot": "projects",
