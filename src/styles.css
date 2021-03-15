@@ -3,7 +3,10 @@
 /*Style de Bootswatch - Materia (tutorial de yt)*/
 
 body {
-    padding-top: 120px
+    padding-top: 120px;
+    /*background-image: url("C:\Users\Oscar\Documents\GitHub\foromultimedia\src\img\FONDO.jpeg");
+    background-repeat: no-repeat;*/
+    background-color: #59A7A9
 }
 pre {
     background: #f7f7f9
