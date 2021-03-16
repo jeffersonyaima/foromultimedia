@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "foromultimedia-8511c": {
+      "hosting": {
+        "foromultimedia": [
+          "foromultimedia-8511c"
+        ]
+      }
+    }
+  }
+}
