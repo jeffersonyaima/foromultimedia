@@ -1,14 +1,29 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {first} from 'rxjs/operators';
+import firebase from 'firebase/app';
 
 
-@Injectable()
+//@Injectable()
+
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class AuthService {
 
 
   constructor(public afAuth: AngularFireAuth) {}
+
+  async loginGoogle(){
+    try{
+      return this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+    }
+    catch(error){
+    console.log(error);
+    return 0}
+  }
 
   async Login(email:string, password:string){
 
