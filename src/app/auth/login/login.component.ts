@@ -19,6 +19,18 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void { }
 
+ async onGoogleLogin(){
+   try{
+     const user = await this.authSvc.loginGoogle();
+     if(user){
+      this.router.navigate(['/home']);
+    }
+   }
+   catch(error){
+     console.log(error);
+   }
+  }
+
   async onLogin(){
 
     const {email, password} = this.loginForm.value;
@@ -34,7 +46,5 @@ export class LoginComponent implements OnInit {
     }
     
   }
-
-
 
 }
