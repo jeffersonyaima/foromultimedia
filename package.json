@@ -22,13 +22,17 @@
     "@angular/platform-browser": "~11.2.4",
     "@angular/platform-browser-dynamic": "~11.2.4",
     "@angular/router": "~11.2.4",
+    "@firebase/auth": "^0.16.4",
     "@popperjs/core": "^2.9.1",
     "bootstrap": "^4.6.0",
-    "firebase": "^8.3.0",
+
     "hammerjs": "^2.0.8",
+    "firebase": "^8.2.10",
+    "firebase-admin": "^9.5.0",
     "jquery": "^3.6.0",
     "jsfeat": "0.0.8",
     "rxjs": "~6.6.0",
+    "sweetalert2": "^10.15.7",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"
   },

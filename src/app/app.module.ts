@@ -23,11 +23,23 @@ import {LayoutModule} from '@angular/cdk/layout';
 
 
 
+import {FormsModule} from '@angular/forms';
 
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFirestore } from '@angular/fire/firestore';
+import {AngularFireDatabaseModule, AngularFireDatabase, AngularFireList} from '@angular/fire/database'
 
-
+export const firebaseConfig = {
+  apiKey: "AIzaSyAKuO8ExX3hnuV9EgxmikNbinnflHAgaQw",
+  authDomain: "foromultimedia-8511c.firebaseapp.com",
+  databaseURL: "https://foromultimedia-8511c-default-rtdb.firebaseio.com",
+  projectId: "foromultimedia-8511c",
+  storageBucket: "foromultimedia-8511c.appspot.com",
+  messagingSenderId: "558795473823",
+  appId: "1:558795473823:web:ac966b71e0622c972533aa"
+};
 
 
 import { GuionesComponent } from './secciones/guiones/guiones.component';
@@ -44,6 +56,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
@@ -56,9 +69,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
-    LayoutModule
+    LayoutModule,
+    AngularFirestoreModule,
   ],
-  providers: [],
+  providers: [AngularFirestore],
   bootstrap: [AppComponent]
+
+
 })
 export class AppModule { }
