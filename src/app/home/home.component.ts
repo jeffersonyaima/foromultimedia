@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,20 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    (function ($) {
+
+      $(document).ready(function(){
+        $("#mostrar").click(function(){
+          $('.target').show("swing");
+         });
+        $("#ocultar").click(function(){
+          $('.target').hide("linear");
+        });
+      });
+
+    })(jQuery);
+
   }
 
 }

@@ -1,0 +1,79 @@
+body{
+  background-image: url(assets/Fondo.png);
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+/*
+.body{
+  background: aquamarine;
+}
+
+header{
+  width: 100%;
+}
+header nav{
+  width: 90%;
+  max-width: 1000px;
+  margin: 20px auto;
+  background: #023859;
+}
+.menu_bar{
+  display: none;
+}
+
+header nav ul{
+  overflow:hidden;
+  list-style: none;
+}
+
+header nav ul li{
+  float:left;
+}
+
+header nav ul li a {
+  color:#fff;
+  padding:20px;
+  display:block;
+  text-decoration-color: #fff;
+  text-decoration:none;
+}
+
+header nav ul li span{
+  margin-right:10 px;
+}
+
+header nav ul li a:hover {
+  background:#037E8C ;
+}
+@media screen and (max-width:800px){
+  header nav {
+    width:80%;
+    height: 100%;
+    margin: 0px;
+    position:fixed;
+  }
+  header nav ul li{
+    display:block;
+    float:none;
+    border-bottom:1 px solid rgba(255,255,255, 0.3 );
+  }
+  .menu_bar{
+    display:block;
+    width:100%;
+    background:#ccc;
+  }
+  .menu_bar .bt-menu{
+    display: block;
+    padding: 20px;
+    background: #024959 ;
+    color: #fff;
+    text-decoration: none;
+    font-weight: none;
+    font-size: 25px;
+    box-sizing: border-box;
+  }
+}
+*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
