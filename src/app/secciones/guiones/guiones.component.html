@@ -8,7 +8,7 @@
       </div>
       <div class="botones">
         <ul >
-          <li><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
 
           <div class="modal fade" id="myModal">
             <div class="modal-dialog">
@@ -55,7 +55,7 @@
             </div>
           </div>
 
-          <li><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
 
           <div class="modal fade" id="myModal2">
             <div class="modal-dialog">
@@ -102,7 +102,7 @@
             </div>
           </div>
 
-          <li> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
+          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
 
           <div class="modal fade" id="myModal3">
             <div class="modal-dialog">
