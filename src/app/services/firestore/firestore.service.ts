@@ -9,12 +9,15 @@ export interface Usuarios{
   nombreusuario:string;
   id: string;
   password:string;
+  admin:Boolean;
+  
 }
 
 @Injectable()
 
 export class FirestoreService {
 
+  
   usuarios!: Observable<Usuarios>;
   private coleccionUsuarios!: AngularFirestoreCollection<Usuarios>;
 
@@ -40,7 +43,6 @@ export class FirestoreService {
     });
 
    }
-
 
    //Crea un nuevo usuario
    public registrarUsuario(data: Usuarios) {
