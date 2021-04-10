@@ -1,10 +1,68 @@
 
-<button  [routerLink]="['/menu']" > click </button>
+ <header>
+    <div class="wrapper">
+      <img id="logo2d" src="../../assets/2D.png">  
+    </div>
+    <div class="hed">
+      <img id="logo3d" src="../../assets/3D.gif">  
+    </div>
+  </header>
+  <footer>
+      <div class="mesa">
+        <div class="hed1">
+          <img id="logoguiones" src="../../assets/guiones2.png">  
+        </div>
+        <div class="hed2">
+          <img id="logoaudio" src="../../assets/audio.png"> 
+        </div>
+        <div class="hed3">
+          <img id="logoprogramacion" src="../../assets/promagramacion.png">  
+        </div>
+        <div class="hed4">
+          <img id="logorealidad" src="../../assets/realidad.png">  
+        </div>
+       </div>
+    </footer>
+    <script>
+      $(document).ready(function(){
+      $("#logoguiones").hover(function(){$("#logoguiones"),
+      gsap.from('#logoguiones', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("logoguiones"),
+      gsap.set('logoguiones', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});
+    
+      $(document).ready(function(){
+      $("#logo3d").hover(function(){$("#logo3d"),
+      gsap.from('#logo3d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("logo3d"),
+      gsap.set('logo3d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});
 
+      $(document).ready(function(){
+      $("#logo2d").hover(function(){$("#logo2d"),
+      gsap.from('#logo2d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("#logo2d"),
+      gsap.set('#logo2d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});  
 
-<img width="250" src="/wp-content/uploads/2012/12/jquery.jpg" class="target">
+      $(document).ready(function(){
+      $("#logoaudio").hover(function(){$("#logoaudio"),
+      gsap.from('#logoaudio', { duration: 1, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("#logoaudio"),
+      gsap.set('#logoaudio', { duration: 1, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});  
 
-<input type="button" id="mostrar" name="boton1" value="Click para mostrar elementos">
-<input type="button" id="ocultar" name="boton2" value="Click pora ocultar elementos">
+      $(document).ready(function(){
+      $("#logoprogramacion").hover(function(){$("#logoprogramacion"),
+      gsap.from('#logoprogramacion', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("#logoprogramacion"),
+      gsap.set('#logoprogramacion', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});  
 
-<h1>HELLO Homepage</h1>
+      $(document).ready(function(){
+      $("#logorealidad").hover(function(){$("#logorealidad"),
+      gsap.from('#logorealidad', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
+      function(){$("#logorealidad"),
+      gsap.set('#logorealidad', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 });
+      });});  
+    </script>
