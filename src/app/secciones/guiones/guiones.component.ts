@@ -9,9 +9,11 @@ import {AuthService} from '../../auth/services/auth.service';
 })
 export class GuionesComponent implements OnInit {
 
+  
+  constructor( private authSvc: AuthService) { }
+
   public user$: Observable<any> = this.authSvc.afAuth.user;
 
-  constructor( private authSvc: AuthService) { }
 
   ngOnInit(): void {
   }
