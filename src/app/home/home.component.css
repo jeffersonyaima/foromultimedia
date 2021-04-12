@@ -68,3 +68,49 @@ footer .mesa .hed4{
     margin-top: -240px;
     margin-left: 890px;
 }
+/*---------------------------------------------reponsive---------------------------------------------------*/
+
+@media screen and (max-width:820px){
+    .header{
+      grid-template-columns: 1fr 1fr;
+    }
+    .header{
+      padding: 10px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .header{
+      width: 30px;
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width:500px){
+    .header{
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media screen and (max-width:820px){
+    .mesa{
+      grid-template-columns: 1fr 1fr;
+    }
+    .mesa{
+      padding: 10px;
+      display:flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .mesa{
+      width: 30px;
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+  }
+  @media screen and (max-width:500px){
+    .mesa{
+      grid-template-columns: 1fr;
+    }
+  }
+  
