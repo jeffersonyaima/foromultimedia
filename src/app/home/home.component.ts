@@ -8,7 +8,8 @@ declare var jQuery: any;
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  imgsrc : any;
+  constructor() { this.imgsrc='../../assets/3D.png'}
 
   ngOnInit(): void {
 
