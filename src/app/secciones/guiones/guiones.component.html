@@ -1,6 +1,4 @@
-
-
-  <section id="pantalla">
+  <section id="pantalla" >
 
     <div class="izquierdo">
       <div class="icono">
@@ -8,7 +6,7 @@
       </div>
       <div class="botones">
         <ul >
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
 
           <div class="modal fade" id="myModal">
             <div class="modal-dialog">
@@ -55,7 +53,7 @@
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
 
           <div class="modal fade" id="myModal2">
             <div class="modal-dialog">
@@ -102,7 +100,7 @@
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
+          <li *ngIf="validar"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
 
           <div class="modal fade" id="myModal3">
             <div class="modal-dialog">
@@ -153,11 +151,16 @@
     </div>
 
     <div class="derecha">
+        <div class="header">
           <h1>Cortos y Guiones</h1>
           <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
             <br>
             Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
           </p>
+        </div>
+
+        <div class="ejemplos">
+          
           <h3>Proyectos</h3>
           <div class="cuadricula">
             <div class="item">1</div>
@@ -167,8 +170,11 @@
             <div class="item">5</div>
             <div class="item">6</div>
           </div>
+
+        </div>
     </div>
 
   </section>
 
+  <div class="fondonegro"></div>
 
