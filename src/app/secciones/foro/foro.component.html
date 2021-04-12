@@ -1,5 +1,3 @@
-
-
   <main>
     <div >
       <h2 class="Titulo">Preguntas-secciones</h2>
@@ -57,14 +55,126 @@
     </div>
 
       <!-- Tab panes -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Preguntar</button>
+
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h5 class="modal-title">Editar seccion</h5>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+
+
+
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <div>
+
+                      <label for="ciudad">Seccion:</label>
+                      <select class="custom-select">
+
+                          <option value="TE">Cortos y Guiones</option>
+                          <option value="VA">Animacion 2D y 3D</option>
+                          <option value="BA">Audio y Video</option>
+                          <option value="M">Aplicacion y Entornos Virtuales</option>
+                          <option value="M">Programacion</option>
+
+                      </select>
+
+                  </div>
+
+                  <div>
+                    <input type="file" id="files" name="files[]" multiple />
+                  <output id="list"></output>
+
+                  <script>
+                    function handleFileSelect(evt) {
+                      var files = evt.target.files; // FileList object
+
+                      // files is a FileList of File objects. List some properties.
+                      var output = [];
+                      for (var i = 0, f; f = files[i]; i++) {
+                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                                    f.size, ' bytes, last modified: ',
+                                    f.lastModifiedDate.toLocaleDateString(), '</li>');
+                      }
+                      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                    }
+
+                    document.getElementById('files').addEventListener('change', handleFileSelect, false);
+                  </script>
+                  </div>
+
+                  <div>
+                    <button type="button" class="btn-primary" data-dismiss="modal">Agregar</button>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
       <div class="tab-content">
         <div id="Cortos-guiones" class="container tab-pane active"><br>
-          <div class="contenedor-pregunta" >
-            <p class="pregunta">¿Herramientas para hacer un guion? <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+          <div class="contenedor-pregunta" data-toggle="tab" href="#home">
+            <p class="pregunta" >¿Herramientas para hacer un guion? <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
             </svg> </p>
-            <p class="respuesta">Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+              <p class="pregunta" > Responder</p>
+            </button>
+
+            <div id="demo" class="collapse">
+              <div class="respuestas">
+
+                <div class="respuesta_fija">
+                  <div class="card">
+                    <div class="texto_respuesta">
+                      <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary">Reportar</button>
+                  </div>
+                </div>
+                <div class="respuesta_fija">
+                  <div class="card">
+                    <div class="texto_respuesta">
+                      <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary">Reportar</button>
+                  </div>
+                </div>
+                <div class="respuesta_fija">
+                  <div class="card">
+                    <div class="texto_respuesta">
+                      <textarea name="respuesta_propia" id="" cols="137" rows="5"></textarea>
+                    </div>
+                  </div>
+                  <div>
+                    <button type="button" class="btn btn-primary">Agregar respuesta</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
+
+
 
           <div class="contenedor-pregunta">
             <p class="pregunta">¿Que es un guion literario? <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -136,6 +246,16 @@
       </div>
 
   </main>
+
+
+
+
+
+
+
+
+
+
 
 
 

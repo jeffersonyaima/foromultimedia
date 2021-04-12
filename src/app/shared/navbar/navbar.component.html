@@ -1,16 +1,11 @@
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
     <app-menu> </app-menu>
     <a class="navbar-brand" href="\">Foro Multimedia</a>
 
 
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/">Home</a>
-       </li>
-      </ul>
       <ul class="navbar-nav mx-auto " *ngIf="user$ | async as user; else login">
         <li class="nav-item " *ngIf = "!user">
           <a class="nav-link" routerLink="/login">Login</a>
@@ -44,3 +39,4 @@
 
     </div>
   </nav>
+</header>

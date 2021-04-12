@@ -7,7 +7,7 @@ import { AnimacionComponent } from './animacion/animacion.component';
 import { AplicacionComponent } from './aplicacion/aplicacion.component';
 import { ProgramacionComponent } from './programacion/programacion.component';
 import { ForoComponent } from './foro/foro.component';
-import { AudioComponent } from './audio/audio.component';
+
 import { AudiovideoComponent } from './audiovideo/audiovideo.component';
 
 
@@ -19,7 +19,7 @@ import { AudiovideoComponent } from './audiovideo/audiovideo.component';
      AplicacionComponent,
      ProgramacionComponent,
      ForoComponent,
-     AudioComponent,
+
      AudiovideoComponent],
   imports: [
     CommonModule

@@ -3,20 +3,32 @@
   padding:0 px;
 }
 
+#pantalla{
+ max-width: 100%;
+ max-height: 100%;
+}
+
+.contenido_derecha{
+  margin: 5%;
+}
+
 .izquierda{
-  /*background-image: url(../assets/Fondo.png);*/
-  height: 100vh;
+  height: 100%;
   width: 50%;
 }
 
 .derecha{
-
  background:#98D3D4 ;
  background-size: cover;
  background-position: center;
  width: 50%;
- height: 100vh;
+ height: auto;
  justify-content: space-between;
+}
+
+.parrafo{
+  text-align: justify;
+  margin: 5px;
 }
 
 #pantalla{
@@ -25,28 +37,25 @@
 }
 
 .cuadricula{
-  width: 95%;
+
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  background: lightblue;
   justify-content: space-between;
 }
 .proyectos{
   text-align: center;
 }
 
-.parrafo{
-  text-align: justify;
-  margin: 5px;
-}
-
 .item{
+  border-radius: 10px;
   margin-top: 5px;
-  background: gray;
-  color: #fff;
+  background: white;
+  color: gray;
   flex:none;
-  width: calc((100% - 20px )/ 3);
+  width: calc((100% - 3% )/ 3);
+  height: 25vh;
+
 
   @media screen and (min-width: 600px) {
     width: calc((100% - 30px) / 4);
@@ -60,4 +69,79 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+}
+/*.icono{
+  border-left: 10px;
+  border-radius: 50%;
+  border:10px solid #666;
+
+}*/
+.ImgRedonda{
+  border: black 1px solid;
+  border-radius: 50%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  height: 75%;
+  width: 75%;
+}
+
+.item p{
+  text-align: center;
+}
+
+/*-----------------------------------------------Estilos Modales------------------------------------------*/
+
+/*--------------------------------------------------Eliminar----------------------------------------------*/
+.botones ul li{
+  padding:10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-footer{
+  display: flex;
+  justify-content: space-between;
+}
+.Texto_Buscar{
+  display: flex;
+  justify-content: space-between;
+}
+.form-control{
+  background-color: #37A1F4;
+  border-radius: 20px;
+  color:#fff;
+}
+.Buscar{
+  display:flex;
+  justify-content: space-between;
+}
+.Eliminar_Boton{
+
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+/*--------------------------------------------------Editar-----------------------------------------------*/
+
+
+/*--------------------------------------------------Agregar----------------------------------------------*/
+
+.modal_imagen{
+  border: black 1px solid;
+}
+.imagen_cortos{
+  border-radius: 50%;
+  width: 30%;
+  height: 30%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+
+#boton_agregar{
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.modal-content{
+  border-radius: 5%;
 }

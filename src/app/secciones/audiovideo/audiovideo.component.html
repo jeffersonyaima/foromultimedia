@@ -1,37 +1,175 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
 
-</head>
-<body>
 
   <section id="pantalla">
 
     <div class="izquierdo">
-      <img src="assets/Guiones.png" alt="" class="imgredonda">
+      <div class="icono">
+        <img  src="../../../assets/audio .png" alt="" class="ImgRedonda">
+      </div>
+      <div class="botones">
+        <ul >
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar</button></li>
+
+          <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Editar Ejemplo</h4>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div class="modal_imagen">
+                    <img  class="imagen_cortos" src="../../../assets/audio .png" alt="">
+                  </div>
+                  <br>
+                  <h5 class="modal-title">Buscar ID:</h5>
+                  <br>
+                  <div class=Buscar>
+                    <div class="Texto_Buscar">
+                      <input type="text" class="form-control" placeholder=" id">
+                    </div>
+                    <div class="Boton_Buscar">
+                      <button type="button" class="btn-primary">Buscar</button>
+                    </div>
+                  </div>
+                  <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar</button></li>
+
+          <div class="modal fade" id="myModal2">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Agregar Ejemplo</h4>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <div >
+                    <input type="file" id="files" name="files[]" multiple />
+                    <output id="list"></output>
+
+                    <script>
+                      function handleFileSelect(evt) {
+                        var files = evt.target.files; // FileList object
+
+                        // files is a FileList of File objects. List some properties.
+                        var output = [];
+                        for (var i = 0, f; f = files[i]; i++) {
+                          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                                      f.size, ' bytes, last modified: ',
+                                      f.lastModifiedDate.toLocaleDateString(), '</li>');
+                        }
+                        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                      }
+
+                      document.getElementById('files').addEventListener('change', handleFileSelect, false);
+                    </script>
+                  </div>
+                  <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar</button></li>
+
+          <div class="modal fade" id="myModal3">
+            <div class="modal-dialog">
+              <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                  <h4 class="modal-title">Eliminar Ejemplo</h4>
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                  <h5 class="modal-title">Buscar ID:</h5>
+                  <br>
+                  <div class=Buscar>
+                    <div class="Texto_Buscar">
+                      <input type="text" class="form-control" placeholder=" id">
+                    </div>
+                    <div class="Boton_Buscar">
+                      <button type="button" class="btn-primary">Buscar</button>
+                    </div>
+                  </div>
+
+                  <br>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a eliminar"></textarea>
+
+
+                </div>
+
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                  <div class="Eliminar_Boton">
+                    <button type="button" class="btn-primary" data-dismiss="modal">Eliminar</button>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
     </div>
 
     <div class="derecha">
-          <h1>Audio y Video</h1>
-          <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
-            <br>
-            Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
-          </p>
-          <h3>Proyectos</h3>
-          <div class="cuadricula">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-            <div class="item">4</div>
-            <div class="item">5</div>
-            <div class="item">6</div>
-          </div>
+      <div class="contenido_derecha">
+        <h1>Audio y Video</h1>
+        <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
+          <br>
+          Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
+        </p>
+        <br>
+        <h3>Proyectos</h3>
+        <br>
+        <div class="cuadricula">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+          <div class="item">4</div>
+          <div class="item">5</div>
+          <div class="item">6</div>
+        </div>
+      </div>
+
     </div>
 
   </section>
 
-</body>
-</html>
+
+
 

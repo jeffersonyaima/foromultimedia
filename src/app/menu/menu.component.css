@@ -3,15 +3,25 @@
   padding:0 px;
 }
 
+#slide_nav_button{
+  height: 40px;
+  width: 40px;
+}
+#slide_nav_button:hover {
+  background: #023859;
+  border:5px solid #eee;
+  transition: all - 0.3s;
+}
+
 #slide_menu{
   display: none;
   z-index: 2;
   position:absolute;
   width: 250px;
   height: auto;
-  background: #333;
+  background: #023859;
   color:#fff;
-  outline: 1px solid #2a2a2a;
+  outline: 1px solid #023859;
 }
 
 #slide_menu ul{
@@ -21,7 +31,7 @@
 }
 
 #slide_menu li{
-  outline: 1px solid #2a2a2a;
+  outline: 1px solid #023859;
   transition: all - 0.3s;
 }
 
@@ -34,12 +44,12 @@
  }
 
  #slide_menu ul li:hover {
-   background: #444 ;
+   background: #023859;
    border-left:5px solid #eee;
  }
 
  #slide_menu ul li {
-  outline :1px solid #2a2a2a
+  outline :1px solid #023859
  }
 
  .contenido {

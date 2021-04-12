@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import {AuthService} from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-audiovideo',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AudiovideoComponent implements OnInit {
 
-  constructor() { }
+  public user$: Observable<any> = this.authSvc.afAuth.user;
+
+  constructor( private authSvc: AuthService) { }
 
   ngOnInit(): void {
   }

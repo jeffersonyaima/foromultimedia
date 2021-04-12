@@ -4,11 +4,11 @@
 
     <div class="izquierdo">
       <div class="icono">
-        <img src="assets/Guiones.png" alt="" class="imgredonda">
+        <img  src="../../../assets/guiones2 .png" alt="" class="ImgRedonda">
       </div>
       <div class="botones">
         <ul >
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar</button></li>
 
           <div class="modal fade" id="myModal">
             <div class="modal-dialog">
@@ -16,46 +16,41 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Editar seccion</h4>
+                  <h4 class="modal-title">Editar Ejemplo</h4>
                   <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
-
-                  <textarea name="texto" id="texto1" cols="65" rows="10"></textarea>
+                  <div class="modal_imagen">
+                    <img  class="imagen_cortos" src="../../../assets/guiones2 .png" alt="">
+                  </div>
+                  <br>
+                  <h5 class="modal-title">Buscar ID:</h5>
+                  <br>
+                  <div class=Buscar>
+                    <div class="Texto_Buscar">
+                      <input type="text" class="form-control" placeholder=" id">
+                    </div>
+                    <div class="Boton_Buscar">
+                      <button type="button" class="btn-primary">Buscar</button>
+                    </div>
+                  </div>
+                  <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
                 </div>
 
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <input type="file" id="files" name="files[]" multiple />
-                  <output id="list"></output>
-
-                  <script>
-                    function handleFileSelect(evt) {
-                      var files = evt.target.files; // FileList object
-
-                      // files is a FileList of File objects. List some properties.
-                      var output = [];
-                      for (var i = 0, f; f = files[i]; i++) {
-                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                    f.size, ' bytes, last modified: ',
-                                    f.lastModifiedDate.toLocaleDateString(), '</li>');
-                      }
-                      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                    }
-
-                    document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                  </script>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Agregar</button>
+                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
                 </div>
 
               </div>
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
+          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar</button></li>
 
           <div class="modal fade" id="myModal2">
             <div class="modal-dialog">
@@ -69,40 +64,42 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                  <div >
+                    <input type="file" id="files" name="files[]" multiple />
+                    <output id="list"></output>
 
-                  <textarea name="texto" id="texto1" cols="65" rows="10"></textarea>
+                    <script>
+                      function handleFileSelect(evt) {
+                        var files = evt.target.files; // FileList object
+
+                        // files is a FileList of File objects. List some properties.
+                        var output = [];
+                        for (var i = 0, f; f = files[i]; i++) {
+                          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                                      f.size, ' bytes, last modified: ',
+                                      f.lastModifiedDate.toLocaleDateString(), '</li>');
+                        }
+                        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                      }
+
+                      document.getElementById('files').addEventListener('change', handleFileSelect, false);
+                    </script>
+                  </div>
+                  <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
                 </div>
 
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <input type="file" id="files" name="files[]" multiple />
-                  <output id="list"></output>
-
-                  <script>
-                    function handleFileSelect(evt) {
-                      var files = evt.target.files; // FileList object
-
-                      // files is a FileList of File objects. List some properties.
-                      var output = [];
-                      for (var i = 0, f; f = files[i]; i++) {
-                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                    f.size, ' bytes, last modified: ',
-                                    f.lastModifiedDate.toLocaleDateString(), '</li>');
-                      }
-                      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                    }
-
-                    document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                  </script>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Agregar</button>
+                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
                 </div>
 
               </div>
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
+          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar</button></li>
 
           <div class="modal fade" id="myModal3">
             <div class="modal-dialog">
@@ -116,33 +113,30 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                  <h5 class="modal-title">Buscar ID:</h5>
+                  <br>
+                  <div class=Buscar>
+                    <div class="Texto_Buscar">
+                      <input type="text" class="form-control" placeholder=" id">
+                    </div>
+                    <div class="Boton_Buscar">
+                      <button type="button" class="btn-primary">Buscar</button>
+                    </div>
+                  </div>
 
-                  <textarea name="texto" id="texto1" cols="65" rows="10"></textarea>
+                  <br>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a eliminar"></textarea>
+
+
                 </div>
 
 
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <input type="file" id="files" name="files[]" multiple />
-                  <output id="list"></output>
+                  <div class="Eliminar_Boton">
+                    <button type="button" class="btn-primary" data-dismiss="modal">Eliminar</button>
+                  </div>
 
-                  <script>
-                    function handleFileSelect(evt) {
-                      var files = evt.target.files; // FileList object
-
-                      // files is a FileList of File objects. List some properties.
-                      var output = [];
-                      for (var i = 0, f; f = files[i]; i++) {
-                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                    f.size, ' bytes, last modified: ',
-                                    f.lastModifiedDate.toLocaleDateString(), '</li>');
-                      }
-                      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                    }
-
-                    document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                  </script>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Agregar</button>
                 </div>
 
               </div>
@@ -153,20 +147,25 @@
     </div>
 
     <div class="derecha">
-          <h1>Cortos y Guiones</h1>
-          <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
-            <br>
-            Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
-          </p>
-          <h3>Proyectos</h3>
-          <div class="cuadricula">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-            <div class="item">4</div>
-            <div class="item">5</div>
-            <div class="item">6</div>
-          </div>
+      <div class="contenido_derecha">
+        <h1>Cortos y Guiones</h1>
+        <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
+          <br>
+          Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
+        </p>
+        <br>
+        <h3>Proyectos</h3>
+        <br>
+        <div class="cuadricula">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+          <div class="item">4</div>
+          <div class="item">5</div>
+          <div class="item">6</div>
+        </div>
+      </div>
+
     </div>
 
   </section>
