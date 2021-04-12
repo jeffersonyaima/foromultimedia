@@ -1,10 +1,9 @@
-
     <header>
     <div class="wrapper">
       <img id="logo2d" src="../../assets/2D.png">  
     </div>
     <div class="hed">
-      <img id="logo3d" src="../../assets/3D.gif">  
+      <img [src]="imgsrc" (mouseover)="imgsrc = '../../assets/3D.gif'" (mouseout)="imgsrc = '../../assets/3D.png'">  
     </div>
   </header>
   <footer>
@@ -29,13 +28,6 @@
       gsap.from('#logoguiones', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
       function(){$("logoguiones"),
       gsap.set('logoguiones', { duration: 2, ease: "elastic.out(2, 0.1)", y: -10 });
-      });});
-    
-      $(document).ready(function(){
-      $("#logo3d").hover(function(){$("#logo3d"),
-      gsap.from('#logo3d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 }); }, 
-      function(){$("logo3d"),
-      gsap.set('logo3d', { duration: 3, ease: "elastic.out(2, 0.1)", y: -10 });
       });});
 
       $(document).ready(function(){
