@@ -54,6 +54,10 @@ export class RegisterComponent implements OnInit {
    
  }
 
+
+
+ 
+
  onRegister(){
 
    const {email, password}= this.registerForm.value;
