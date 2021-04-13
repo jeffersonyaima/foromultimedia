@@ -16,8 +16,6 @@ export class RegisterComponent implements OnInit {
 
 
   public registerForm= new FormGroup({
-    /*email : new FormControl(''),
-    password: new FormControl(''),*/
   })
 
   
@@ -31,6 +29,7 @@ export class RegisterComponent implements OnInit {
       apellido:[''],
       nombreusuario:[''],
       password:[''],
+      admin:[false]
     });
   }
 
@@ -40,13 +39,24 @@ export class RegisterComponent implements OnInit {
  }
 
 
- onRegisNuevo(){
+ async onRegisNuevo(){
   console.log('registro',this.registerForm.value);
+
    const formValue = this.registerForm.value;
-   this.firestoreService.guardarusuario(formValue);
-   this.firestoreService.registrarUsuario(formValue);
+   await this.firestoreService.guardarusuario(formValue);
+
+   const {email, password}= this.registerForm.value;
+   const user = this.authSvc.register(email, password);
+
+    if(user){
+      this.router.navigate(['/home']);
+    }
+   
  }
 
+
+
+ 
 
  onRegister(){
 

@@ -9,11 +9,16 @@ export interface Usuarios{
   nombreusuario:string;
   id: string;
   password:string;
+  admin:Boolean;
+  
 }
 
 @Injectable()
 
 export class FirestoreService {
+
+  correo:any;
+
 
   usuarios!: Observable<Usuarios>;
   private coleccionUsuarios!: AngularFirestoreCollection<Usuarios>;
@@ -27,9 +32,10 @@ export class FirestoreService {
 
     return new Promise(async (resolve, reject)=>{
       try{
-        const idn= this.firestore.createId();
-        const data = {idn, ...registerForm};
-        const result = this.coleccionUsuarios.doc(idn).set(data);
+        /*const idn= this.firestore.createId();
+        const data = {idn, ...registerForm};*/
+        const data = registerForm;
+        const result = this.coleccionUsuarios.doc(registerForm.email).set(data);
         resolve(result);
         console.log("Registro enviado a FireStore!");
       }
@@ -40,6 +46,24 @@ export class FirestoreService {
     });
 
    }
+
+   /*FUNCION FUNCIONA PERO NO SE ESTA LLAMANDO*/ 
+
+ leerdatos(correo:any){
+    let respuesta;
+    this.firestore.collection('userlist', ref=>ref.where("email",'==',correo)).get().subscribe((resultado)=>{
+      resultado.docs.forEach((item)=>{
+        let usuario :any = item.data();
+        let ad:any = usuario.admin;
+        console.log(ad);
+        respuesta = ad;
+      })
+    })
+    return respuesta;
+   }
+
+
+
 
 
    //Crea un nuevo usuario

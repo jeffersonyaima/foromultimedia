@@ -1,6 +1,4 @@
-
-
-  <section id="pantalla">
+  <section id="pantalla" >
 
     <div class="izquierdo">
       <div class="icono">
@@ -8,7 +6,7 @@
       </div>
       <div class="botones">
         <ul >
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar</button></li>
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
 
           <div class="modal fade" id="myModal">
             <div class="modal-dialog">
@@ -50,7 +48,7 @@
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar</button></li>
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
 
           <div class="modal fade" id="myModal2">
             <div class="modal-dialog">
@@ -99,7 +97,7 @@
             </div>
           </div>
 
-          <li *ngIf="user$ | async as user;"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar</button></li>
+          <li *ngIf="validar"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
 
           <div class="modal fade" id="myModal3">
             <div class="modal-dialog">
@@ -170,4 +168,5 @@
 
   </section>
 
+  <div class="fondonegro"></div>
 
