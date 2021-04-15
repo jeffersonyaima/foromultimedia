@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
     this.imgsrc2d='../../assets/2D.png',
     this.imgsrcguiones='../../assets/guiones2.png',
     this.imgsrcaudio='../../assets/audio.png',
-    this.imgsrcprogramacion='../../assets/promagamacion.png',
+    this.imgsrcprogramacion='../../assets/promagramacion.png',
     this.imgsrcrealidad='../../assets/realidad.png'
   }
 
