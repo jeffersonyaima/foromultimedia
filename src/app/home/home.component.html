@@ -1,25 +1,60 @@
     <header>
     <div class="wrapper">
-      <a href="animacion"><img id="logo2d" src="../../assets/2D.png"></a>
+      <a href="animacion">
+        <img id="logo2d" 
+          [src]="imgsrc2d" 
+          (mouseover)="imgsrc2d ='../../assets/2d.gif'" 
+          (mouseout)="imgsrc2d = '../../assets/2D.png'"
+        >
+      </a>
     </div>
     <div class="hed">
-      <a href="animacion"><img id="logo3d" [src]="imgsrc" (mouseover)="imgsrc = '../../assets/3D.gif'" (mouseout)="imgsrc = '../../assets/3D.png'"></a>
+      <a href="animacion">
+        <img id="logo3d" 
+          [src]="imgsrc3d" 
+          (mouseover)="imgsrc3d = '../../assets/3D.gif'" 
+          (mouseout)="imgsrc3d = '../../assets/3D.png'"
+        >
+      </a>
     </div>
   </header>
   <footer>
       <div class="mesa">
         <div class="hed1">
-          <a href="guiones"><img id="logoguiones" src="../../assets/guiones2.png"></a>
-
+          <a href="guiones">
+            <img id="logoguiones" 
+              [src]="imgsrcguiones" 
+              (mouseover)="imgsrcguiones = '../../assets/guiones2.gif'" 
+              (mouseout)="imgsrcguiones = '../../assets/guiones2.png'"
+            >
+          </a>
         </div>
         <div class="hed2">
-          <a href="audiovideo"><img id="logoaudio" src="../../assets/audio.png"></a>
+          <a href="audiovideo">
+            <img id="logoaudio" 
+              [src]="imgsrcaudio" 
+              (mouseover)="imgsrcaudio = '../../assets/audio.gif'" 
+              (mouseout)="imgsrcaudio = '../../assets/audio.png'"
+            >
+          </a>
         </div>
         <div class="hed3">
-          <a href="programacion"><img id="logoprogramacion" src="../../assets/promagramacion.png"></a>
+          <a href="programacion">
+            <img id="logoprogramacion" 
+              [src]="imgsrcprogramacion" 
+              (mouseover)="imgsrcprogramacion = '../../assets/promagramacion.gif'" 
+              (mouseout)="imgsrcprogramacion = '../../assets/promagramacion.png'"
+            >
+          </a>
         </div>
         <div class="hed4">
-          <a href="aplicacion"><img id="logorealidad" src="../../assets/realidad.png"></a>
+          <a href="aplicacion">
+            <img id="logorealidad" 
+              [src]="imgsrcrealidad" 
+              (mouseover)="imgsrcrealidad = '../../assets/realidad.gif'" 
+              (mouseout)="imgsrcrealidad = '../../assets/realidad.png'"
+              >
+          </a>
         </div>
        </div>
     </footer>

@@ -3,10 +3,6 @@ declare var jQuery: any;
 
 import { gsap, Elastic } from 'gsap'
 
-function something () {
-  
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,9 +10,22 @@ function something () {
 })
 export class HomeComponent implements OnInit {
 
-  imgsrc : any;
-  constructor() { this.imgsrc='../../assets/3D.png'}
+  imgsrc3d : any;
+  imgsrc2d : any;
+  imgsrcguiones : any;
+  imgsrcaudio : any;
+  imgsrcprogramacion : any;
+  imgsrcrealidad : any;
+  constructor() { 
+    this.imgsrc3d='../../assets/3D.png', 
+    this.imgsrc2d='../../assets/2D.png',
+    this.imgsrcguiones='../../assets/guiones2.png',
+    this.imgsrcaudio='../../assets/audio.png',
+    this.imgsrcprogramacion='../../assets/promagamacion.png',
+    this.imgsrcrealidad='../../assets/realidad.png'
+  }
 
+  
   ngOnInit(): void {
 
     (function ($) {
