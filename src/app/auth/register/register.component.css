@@ -9,3 +9,14 @@
  margin: 0 auto;
     
 }
+
+.fondoblanco{
+    width: max-content;
+    background-color: white;
+    background-size: cover;
+}
+
+
+.btn-redo{
+    border-radius: 10px;
+  }

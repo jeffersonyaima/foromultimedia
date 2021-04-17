@@ -1,9 +1,12 @@
 
 .header .navbar {
-  background-color: transparent !important;
+  background-color: red;
 }
 
 #navbarColor01{
+  margin-left: 80%;
+}
 
-  margin-left: 85%;
+.bg-main{
+  background-color:red;
 }
