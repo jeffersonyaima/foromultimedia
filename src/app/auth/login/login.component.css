@@ -1,14 +1,18 @@
 .colorcuadro{
 background-color: #59A7A9;
+margin-bottom: 5%;
 }
 
 .colorblanco{
     background-color:white;
     border-radius: 25px;
     margin: 0 auto;
-
+    height:100%;
  }
 
  .btn-redo{
     border-radius: 10px;
+  }
+  .colorpantalla{
+    background-color:white;
   }

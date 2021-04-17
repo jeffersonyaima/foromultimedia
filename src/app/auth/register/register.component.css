@@ -3,20 +3,20 @@
 }
 
 .colorblanco{
-    
+
  background-color:white;
  border-radius: 25px;
  margin: 0 auto;
-    
+
 }
 
-.fondoblanco{
-    width: max-content;
-    background-color: white;
-    background-size: cover;
-}
+
 
 
 .btn-redo{
     border-radius: 10px;
   }
+
+.fondoblanco{
+  background-color:white;
+}
