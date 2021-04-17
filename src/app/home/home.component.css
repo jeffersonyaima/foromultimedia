@@ -6,110 +6,119 @@
     border: none;
     outline: none;
 }
-header .wrapper a{
-    width: 10%;
-    height: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 100px;
-    margin-top: 35px;
+header{
+  
+  width: 100%;
 }
-header .hed a{
-    width: 140%;
-    height: 350px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-left: 120px;
-    margin-right: 100px;
-    margin-top: -350px;
+.techo{
+  
+  justify-content: center;
+  width: 100%;
 }
-footer .mesa .hed1 a{
-    height: 280px;
-    width: 280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 60px;
-    margin-left: -50px;
-}
-footer .mesa .hed2 a{
-    height: 280px;
-    width: 280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: -250px;
-    margin-left: 250px;
-}
-footer .mesa .hed3 a{
-    height: 280px;
-    width: 280px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: -320px;
-    margin-left: 570px;
-}
-footer .mesa .hed4 a{
-    height: 250px;
-    width: 250px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: -240px;
-    margin-left: 890px;
-}
-/*---------------------------------------------reponsive---------------------------------------------------*/
 
-@media screen and (max-width:820px){
-    .header{
-      grid-template-columns: 1fr 1fr;
-    }
-    .header{
-      padding: 10px;
-      display:flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .header{
-      width: 30px;
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
-  }
-  @media screen and (max-width:500px){
-    .header{
-      grid-template-columns: 1fr;
-    }
-  }
+.wrapper a{
+  
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center top;
+  margin-right: 70%;
+  
+  margin-top: -9%;
+}
+.lampara{
+  
+  width: 200px;
+  height: 200px;
+  width: min-content;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: center;
+}
+.hed a{
+  
+  height: 200px;
+  width: 200px;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center top;
+  margin-left: 70%;
+  margin-top: -15%;
+}
+footer{
+  
+  width: 100%;
+  
+  position: fixed;
+  bottom: 0;
+}
 
-  @media screen and (max-width:820px){
-    .mesa{
-      grid-template-columns: 1fr 1fr;
-    }
-    .mesa{
-      padding: 10px;
-      display:flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .mesa{
-      width: 30px;
-      margin-right: 10px;
-      margin-bottom: 0;
-    }
-  }
-  @media screen and (max-width:500px){
-    .mesa{
-      grid-template-columns: 1fr;
-    }
-  }
+.mesa{
+  width: max-content;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center bottom;
+  bottom: 0;
+}
+.mesita{
+  display: flex;
+  flex-direction: row;
+  justify-content: center bottom;
+  bottom: 0;
+}
+.mesita img{
+  object-fit: fill;
+}
+
+.elementos{
+  
+  width: max-content;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 10%;
+  right: 23%;
+}
+.elementos .hed1 a{
+ 
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  float: left;
+  margin-left: -7%;
+}
+.elementos .hed2 a{
+ 
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  margin-left: -6%;
+}
+.elementos .hed3 a{
+  
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 9%;
+    
+}
+.elementos .hed4 a{
+  
+  height: 150px;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 9%;
+}
+
