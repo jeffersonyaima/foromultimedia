@@ -25,6 +25,15 @@ main {
   margin:60px 0;
 }
 
+.btn-verde{
+  background-color: #CCCF31;
+} 
+
+.btn-verde p{
+  color:white;
+}
+
+
 
 
 
@@ -73,6 +82,12 @@ main {
   fill: var(--primary)
 }
 
+/*-----------------------------------------Modal Nueva pregunta-----------------------------------------*/
+.form-control{
+  background-color: #37A1F4;
+  border-radius: 20px;
+  color:#fff;
+}
 /*-----------------------------------------contenedor de preguntas-----------------------------------------*/
 
 .contenedor-preguntas{

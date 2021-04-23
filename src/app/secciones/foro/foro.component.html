@@ -1,4 +1,4 @@
-  <main>
+  <main class="mb-5">
     <div >
       <h2 class="Titulo">Preguntas-secciones</h2>
       <!-- Nav tabs -->
@@ -63,12 +63,19 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h5 class="modal-title">Editar seccion</h5>
+                  <h5 class="modal-title">Agregar Pregunta</h5>
                   <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+                    </div>
+
+
+                  </form>
 
 
 
@@ -76,7 +83,11 @@
 
 
                 <!-- Modal footer -->
-                <div class="modal-footer">
+                <div class="modal-footer d-flex justify-content-around ">
+                  <div>
+                    <button type="button" class="btn-primary" data-dismiss="modal">Publicar</button>
+                  </div>
+
                   <div>
 
                       <label for="ciudad">Seccion:</label>
@@ -92,31 +103,8 @@
 
                   </div>
 
-                  <div>
-                    <input type="file" id="files" name="files[]" multiple />
-                  <output id="list"></output>
-
-                  <script>
-                    function handleFileSelect(evt) {
-                      var files = evt.target.files; // FileList object
-
-                      // files is a FileList of File objects. List some properties.
-                      var output = [];
-                      for (var i = 0, f; f = files[i]; i++) {
-                        output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                    f.size, ' bytes, last modified: ',
-                                    f.lastModifiedDate.toLocaleDateString(), '</li>');
-                      }
-                      document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                    }
-
-                    document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                  </script>
-                  </div>
-
-                  <div>
-                    <button type="button" class="btn-primary" data-dismiss="modal">Agregar</button>
-                  </div>
+      
+                  
 
                 </div>
 
@@ -146,11 +134,17 @@
                 <div class="respuesta_fija">
                   <div class="card">
                     <div class="texto_respuesta">
-                      <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                      <p>1. Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
                     </div>
                   </div>
-                  <div>
+                  <div *ngIf="!validar && !own_q"> <!-- No es admin-->
                     <button type="button" class="btn btn-primary">Reportar</button>
+                  </div>
+                  <div *ngIf="validar && !own_q"> <!-- es admin pero no es pregunta propia-->
+                    <button type="button" class="btn btn-primary">Eliminar</button>
+                  </div>
+                  <div *ngIf="own_q"> <!-- pregunta es propia-->
+                    <button type="button" class="btn btn-primary">Editar</button>
                   </div>
                 </div>
                 <div class="respuesta_fija">
@@ -159,8 +153,11 @@
                       <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
                     </div>
                   </div>
-                  <div>
+                  <div *ngIf="!validar">
                     <button type="button" class="btn btn-primary">Reportar</button>
+                  </div>
+                  <div *ngIf="validar">
+                    <button type="button" class="btn btn-primary">Eliminar</button>
                   </div>
                 </div>
                 <div class="respuesta_fija">
@@ -248,6 +245,11 @@
           </div>
         </div>
       </div>
+
+      
+      <div *ngIf="validar" class="row d-flex justify-content-start mb-5 mt-5">
+        <a class= "btn btn-verde col-2 mx-5 btn-redo" [routerLink]="['/register']"><p>Ver Usuarios</p></a>
+    </div>
 
   </main>
 
