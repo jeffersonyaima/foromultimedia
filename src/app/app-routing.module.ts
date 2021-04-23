@@ -15,6 +15,7 @@ const routes:Routes=[
   { path: 'programacion', loadChildren: () => import('./secciones/programacion/programacion.module').then(m => m.ProgramacionModule) },
   { path: 'foro', loadChildren: () => import('./secciones/foro/foro.module').then(m => m.ForoModule) },
   { path: 'audiovideo', loadChildren: () => import('./secciones/audiovideo/audiovideo.module').then(m => m.AudiovideoModule) },
+  { path: 'usuarios', loadChildren: () => import('./secciones/foro/usuarios/usuarios.module').then(m => m.UsuariosModule) },
 
 ];
 
