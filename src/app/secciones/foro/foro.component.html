@@ -1,6 +1,6 @@
   <main class="mb-5">
-    <div >
-      <h2 class="Titulo">Preguntas-secciones</h2>
+    <h2 class="Titulo">Preguntas-secciones</h2>
+    <div class="encabezado_foro">
       <!-- Nav tabs -->
       <div class="categorias">
         <ul class="nav nav-tabs">
@@ -55,132 +55,260 @@
     </div>
 
       <!-- Tab panes -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Preguntar</button>
+      <br>
+      <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Preguntar</button>
 
         <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
+          <div class="modal-dialog">
+            <div class="modal-content">
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h5 class="modal-title">Agregar Pregunta</h5>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h3 class="modal-title">Agregar Pregunta</h3>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+              </div>
 
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <form>
-                    <div class="form-group">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
-                    </div>
-
-
-                  </form>
-
-
-
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer d-flex justify-content-around ">
-                  <div>
-                    <button type="button" class="btn-primary" data-dismiss="modal">Publicar</button>
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <textarea name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
                   </div>
+                </form>
+              </div>
 
-                  <div>
 
-                      <label for="ciudad">Seccion:</label>
-                      <select class="custom-select">
-
-                          <option value="TE">Cortos y Guiones</option>
-                          <option value="VA">Animacion 2D y 3D</option>
-                          <option value="BA">Audio y Video</option>
-                          <option value="M">Aplicacion y Entornos Virtuales</option>
-                          <option value="M">Programacion</option>
-
-                      </select>
-
-                  </div>
-
-      
-                  
-
+              <!-- Modal footer -->
+              <div class="modal-footer d-flex justify-content-around ">
+                <div>
+                  <button type="button" class="btn-primary" data-dismiss="modal">Publicar</button>
                 </div>
-
+                <div>
+                    <label for="ciudad">Seccion:</label>
+                    <select class="custom-select">
+                      <option value="TE">Cortos y Guiones</option>
+                      <option value="VA">Animacion 2D y 3D</option>
+                      <option value="BA">Audio y Video</option>
+                      <option value="M">Aplicacion y Entornos Virtuales</option>
+                      <option value="M">Programacion</option>
+                    </select>
+                </div>
               </div>
             </div>
           </div>
-
-
+        </div>
 
       <div class="tab-content">
         <div id="Cortos-guiones" class="container tab-pane active"><br>
           <div class="contenedor-pregunta" data-toggle="tab" href="#home">
-            <p class="pregunta" >¿Herramientas para hacer un guion? <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-              <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-            </svg> </p>
-            <div>
-              <div><label for=""></label></div>
-              <div><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Responder</button></div>
-              <div></div>
 
+            <div class="container">
+              <div class="row">
+                <div class="col-10 ">
+                  <div class="margin_pregunta">
+                    <p class="pregunta" >¿Herramientas para hacer un guion?</p>
+                  </div>
+                </div>
+                <div class="col-2 ">
+                  <div class="Botones_pregunta1">
+                    <div *ngIf="own_q">
+                      <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#Editar1">Editar</button>
+
+                      <div class="modal fade" id="Editar1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h3 class="modal-title">Editar pregunta</h3>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <textarea name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                                </div>
+                              </form>
+                            </div>
+
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <div class="Agregar_Boton">
+                                <button type="button" class="btn-primary" data-dismiss="modal">Editar</button>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div *ngIf="validar && !own_q"  >
+                      <button type="button" class="btn btn-primary">Eliminar</button>
+                    </div>
+                    <div *ngIf="!validar && !own_q" >
+                      <button type="button" class="btn btn-primary">Reportar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="footer_pregunta">
+              <div><input type=»text» readonly=»readonly» /></div>
+              <div><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Respuestas</button></div>
+              <div><input type=»text» readonly=»readonly» /></div>
             </div>
 
 
             <div id="demo" class="collapse">
-              <div class="respuestas">
+              <div class="scroll">
+                <div class="respuestas">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-10 ">
+                        <div class="card">
+                          <div class="texto_respuesta">
+                            <p>1. Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-2 ">
+                        <div class="botones_pregunta">
+                          <div *ngIf="!validar && !own_a"> <!-- No es admin-->
+                            <button type="button" class="btn btn-primary">Reportar</button>
+                          </div>
+                          <div *ngIf="validar && !own_a"> <!-- es admin pero no es pregunta propia-->
+                            <button type="button" class="btn btn-primary">Eliminar</button>
+                          </div>
 
-                <div class="respuesta_fija">
-                  <div class="card">
-                    <div class="texto_respuesta">
-                      <p>1. Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
-                    </div>
-                  </div>
-                  <div *ngIf="!validar && !own_q"> <!-- No es admin-->
-                    <button type="button" class="btn btn-primary">Reportar</button>
-                  </div>
-                  <div *ngIf="validar && !own_q"> <!-- es admin pero no es pregunta propia-->
-                    <button type="button" class="btn btn-primary">Eliminar</button>
-                  </div>
-                  <div *ngIf="own_q"> <!-- pregunta es propia-->
-                    <button type="button" class="btn btn-primary">Editar</button>
-                  </div>
-                </div>
-                <div class="respuesta_fija">
-                  <div class="card">
-                    <div class="texto_respuesta">
-                      <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
-                    </div>
-                  </div>
-                  <div *ngIf="!validar">
-                    <button type="button" class="btn btn-primary">Reportar</button>
-                  </div>
-                  <div *ngIf="validar">
-                    <button type="button" class="btn btn-primary">Eliminar</button>
-                  </div>
-                </div>
-                <div class="respuesta_fija">
-                  <div class="card">
-                    <div class="texto_respuesta">
-                      <textarea name="respuesta_propia" id="" cols="137" rows="5"></textarea>
-                    </div>
-                  </div>
-                  <div>
-                    <button type="button" class="btn btn-primary">Agregar respuesta</button>
-                  </div>
-                </div>
 
+
+
+                          <div *ngIf="own_a"> <!-- pregunta es propia-->
+                             <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#Editar2">Editar</button>
+
+
+                      <div class="modal fade" id="Editar2">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                              <h3 class="modal-title">Editar Respuesta</h3>
+                              <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                              <form>
+                                <div class="form-group">
+                                  <textarea name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                                </div>
+                              </form>
+                            </div>
+
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                              <div class="Agregar_Boton">
+                                <button type="button" class="btn-primary" data-dismiss="modal">Editar</button>
+                              </div>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-10 ">
+                        <div class="card">
+                          <div class="texto_respuesta">
+                            <p>Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-2 ">
+                        <div class="botones_pregunta">
+                          <div *ngIf="!validar">
+                            <button type="button" class="btn btn-primary">Reportar</button>
+                          </div>
+                          <div *ngIf="validar">
+                            <button type="button" class="btn btn-primary">Eliminar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                  <div class="agregar_respuesta">
+                    <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal1">Agregar Respuesta</button>
+                  </div>
+
+                  <div class="modal fade" id="myModal1">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                          <h3 class="modal-title">Agregar respuesta</h3>
+                          <button type="button" class="close" data-dismiss="modal">×</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <form>
+                            <div class="form-group">
+                              <textarea name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                            </div>
+                          </form>
+                        </div>
+
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <div class="Agregar_Boton">
+                            <button type="button" class="btn-primary" data-dismiss="modal">Agregar</button>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+                </div>
               </div>
+
+
             </div>
           </div>
-
-
-
+          <br>
           <div class="contenedor-pregunta">
             <p class="pregunta">¿Que es un guion literario? <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
               <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
             </svg> </p>
+            <div class="footer_pregunta">
+              <div><input type=»text» readonly=»readonly» /></div>
+              <div><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Respuestas</button></div>
+              <div><input type=»text» readonly=»readonly» /></div>
+            </div>
             <p class="respuesta">En este caso, la denominación toma en cuenta el tipo de información que se vierte en ella. Casi siempre, el guión literario es una guía básica que sólo sirve a los locutores para saber qué y cómo van a decir. Si bien se dejan algunas indicaciones, como la inflexión de la voz o estados de ánimo, no contiene especificaciones técnicas de ningún tipo.</p>
           </div>
         </div>
@@ -246,7 +374,7 @@
         </div>
       </div>
 
-      
+
       <div *ngIf="validar" class="row d-flex justify-content-start mb-5 mt-5">
         <a class= "btn btn-verde col-2 mx-5 btn-redo" [routerLink]="['/usuarios']"><p>Ver Usuarios</p></a>
     </div>

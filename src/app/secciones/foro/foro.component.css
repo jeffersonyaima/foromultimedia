@@ -27,22 +27,17 @@ main {
 
 .btn-verde{
   background-color: #CCCF31;
-} 
+}
 
 .btn-verde p{
   color:white;
 }
 
-
-
-
-
 .categorias{
+  margin-left: 6%;
   column-count: 5;
   margin-right: 10%;
   gap: 20px;
-  margin-bottom: 60px;
-
 }
 
 .categoria{
@@ -173,12 +168,94 @@ main {
 .respuesta_fija{
   display:flex;
   justify-content: space-between;
+  width: 90%;
+  margin-left: 3%;
+  margin-top: 3%;
 }
 
 .texto_respuesta{
+
+  color: white;
   margin:2%;
 }
 .form-control{
   width: 1%;
   height: 1%;
 }
+
+.encabezado_foro{
+  background:white;
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.footer_pregunta{
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+.botones_pregunta{
+  display:flex;
+  justify-content: center;
+  margin-top: 25%;
+}
+.card{
+  background-color: #37A1F4;
+  border-radius: 5px;
+  margin-left: 5%;
+  margin-top:2%;
+  margin-bottom: 2%;
+  margin-right: 2%;
+}
+.agregar_respuesta{
+  margin-left: 4.5%;
+}
+.modal-dialog{
+ margin-top: 17%;
+ margin-left: 35%;
+}
+
+.Botones_pregunta1{
+  display:flex;
+  justify-content: center;
+  margin-top: 10%;
+}
+.scroll {
+  display: block;
+  border: 0px solid red;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  height: 200px;
+  overflow-y: scroll;
+}
+/*-------------------------------------------ventanas emergentes-------------------------------------------*/
+
+.modal-content{
+  border-radius: 10px;
+}
+
+.modal-header{
+  margin: 2%;
+}
+.modal-body{
+  margin: 2%;
+}
+
+.modal-footer{
+  margin: 2%;
+}
+
+.Agregar_Boton{
+  margin-top: 2%;
+  margin-right: 45%;
+}
+.text_area{
+  margin: 2%;
+}
+.margin_pregunta{
+  margin: 2%;
+}
+
+

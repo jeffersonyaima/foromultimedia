@@ -82,6 +82,15 @@
 .item p{
   text-align: center;
 }
+.scroll {
+  display: block;
+  border: 0px solid red;
+  padding: 5px;
+  margin-top: 5px;
+  width: 100%;
+  height: 400px;
+  overflow-y: scroll;
+}
 
 /*-----------------------------------------------Estilos Modales------------------------------------------*/
 
