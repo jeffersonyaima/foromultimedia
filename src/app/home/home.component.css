@@ -1,124 +1,306 @@
 *{
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-    text-decoration: none;
-    border: none;
-    outline: none;
-}
-header{
-  
-  width: 100%;
-}
-.techo{
-  
-  justify-content: center;
-  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
 }
 
-.wrapper a{
-  
-  width: 200px;
-  height: 200px;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center top;
-  margin-right: 70%;
-  
-  margin-top: -9%;
-}
-.lampara{
-  
-  width: 200px;
-  height: 200px;
-  width: min-content;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: center;
-}
-.hed a{
-  
-  height: 200px;
-  width: 200px;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center top;
-  margin-left: 70%;
-  margin-top: -15%;
-}
 footer{
-  
   width: 100%;
-  
   position: fixed;
   bottom: 0;
 }
 
 .mesa{
   width: max-content;
-  
   display: flex;
   flex-direction: row;
   justify-content: center bottom;
   bottom: 0;
 }
 .mesita{
+  width: 100%;
+  height: auto;
   display: flex;
   flex-direction: row;
   justify-content: center bottom;
   bottom: 0;
 }
-.mesita img{
-  object-fit: fill;
-}
-
-.elementos{
+.sec{
   
-  width: max-content;
+  height: 500px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: relative;
+} 
+.elementos{
   overflow: hidden;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   position: fixed;
-  bottom: 10%;
+  justify-content: space-around;
+  top: 30%;
   right: 23%;
 }
-.elementos .hed1 a{
- 
-  height: 150px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  float: left;
-  margin-left: -7%;
+#logoguiones{
+  width: 100%;
+  height: auto;
 }
-.elementos .hed2 a{
- 
-  height: 150px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  margin-left: -6%;
+#logoaudio{
+  width: 100%;
+  height: auto;
 }
-.elementos .hed3 a{
-  
-  height: 150px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  margin-left: 9%;
-    
+#logoprogramacion{
+  width: 100%;
+  height: auto;
 }
-.elementos .hed4 a{
-  
-  height: 150px;
-  width: 150px;
-  display: flex;
-  flex-direction: row;
-  margin-left: 9%;
+#logorealidad{
+  width: 100%;
+  height: auto;
+}
+#lampara{
+  width: 100%;
+  height: auto;
+}
+#logo2d {
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+}
+#logo3d{
+  width: 100%;
+  height: auto;
+  margin-top: 10%;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #logo3d {
+    max-width: 75%;
+    max-height: 100%;
+    margin-top: 15%;
+  }
+  #logo2d {
+    max-width: 60%;
+    max-height: auto;
+    margin-top: 15%;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    width: 75%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logoaudio{
+    width: 88%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logoprogramacion{
+    width: 100%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logorealidad{
+    width: 80%;
+    height: auto;
+    margin-top: 40%;
+  }
+  .sec{
+    height: 200px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 3.5%;
+  } 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #logo3d {
+    max-width: 75%;
+    max-height: 100%;
+    margin-top: 15%;
+  }
+  #logo2d {
+    max-width: 60%;
+    max-height: auto;
+    margin-top: 15%;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    width: 75%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logoaudio{
+    width: 88%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logoprogramacion{
+    width: 100%;
+    height: auto;
+    margin-top: 40%;
+  }
+  #logorealidad{
+    width: 80%;
+    height: auto;
+    margin-top: 40%;
+  }
+  .sec{
+    background-image: url("../../assets/mesa2.png");
+    height: 200px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 3.5%;
+  } 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #logo3d {
+    max-width: 65%;
+    max-height: 100%;
+  }
+  #logo2d {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    width: 75%;
+    height: auto;
+    margin-top: 3%;
+  }
+  #logoaudio{
+    width: 88%;
+    height: auto;
+    margin-top: 3%;
+  }
+  #logoprogramacion{
+    width: 100%;
+    height: auto;
+    margin-top: 3%;
+  }
+  #logorealidad{
+    width: 80%;
+    height: auto;
+    margin-top: 3%;
+  }
+  .sec{
+    background-image: url("../../assets/mesa2.png");
+    height: 200px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 2.5%;
+  } 
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #logo3d {
+    max-width: 65%;
+    max-height: 100%;
+  }
+  #logo2d {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    width: 65%;
+    height: auto;
+    margin-top: -10%;
+  }
+  #logoaudio{
+    width: 78%;
+    height: auto;
+    margin-top: -10%;
+  }
+  #logoprogramacion{
+    width: 90%;
+    height: auto;
+    margin-top: -15%;
+  }
+  #logorealidad{
+    width: 70%;
+    height: auto;
+    margin-top: -10%;
+  }
+  .sec{
+    background-image: url("../../assets/mesa2.png");
+    height: 250px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 4.2%;
+  } 
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #logo3d {
+    max-width: 65%;
+    max-height: 100%;
+  }
+  #logo2d {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    width: 65%;
+    height: auto;
+    margin-top: -10%;
+  }
+  #logoaudio{
+    width: 78%;
+    height: auto;
+    margin-top: -10%;
+  }
+  #logoprogramacion{
+    width: 90%;
+    height: auto;
+    margin-top: -15%;
+  }
+  #logorealidad{
+    width: 70%;
+    height: auto;
+    margin-top: -10%;
+  }
+  .sec{
+    background-image: url("../../assets/mesa2.png");
+    height: 250px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 2.5%;
+  } 
 }
 
