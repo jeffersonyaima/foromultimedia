@@ -77,6 +77,37 @@ main {
   fill: var(--primary)
 }
 
+.pagprin{
+  margin-bottom: 200px;
+}
+
+/*-------Estilo Modales----------*/
+
+.fondo-ng{
+  background-color: rgba(0,0,0,0.5);
+}
+
+.color-modales{
+  background-color: #5679a6;
+}
+
+.txt-blanco{
+color:white;
+}
+
+.fondo-blanco{
+  background-color: white;
+}
+
+.txt-btn{
+  color:#06A8F3;
+}
+
+.fondo-transp{
+  background-color: rgba(0,0,0,0.1);
+}
+
+
 /*-----------------------------------------Modal Nueva pregunta-----------------------------------------*/
 .form-control{
   background-color: #37A1F4;

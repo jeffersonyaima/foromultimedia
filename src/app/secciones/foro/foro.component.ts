@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, TimeoutError } from 'rxjs';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
@@ -16,6 +16,10 @@ export class ForoComponent implements OnInit {
   validar:boolean=false;
   own_q:boolean=true;
   own_a:boolean=true;
+  block:boolean=false;
+
+  cargando:boolean=true;
+   
 
 
   constructor(private authSvc: AuthService, private readonly firestore: AngularFirestore) {
@@ -30,9 +34,14 @@ export class ForoComponent implements OnInit {
         resultado.docs.forEach((item)=>{
           let usuario :any = item.data();
           let ad:any = usuario.admin;
+          let bl:any = usuario.block;
           console.log(ad);
+          console.log(bl);
           this.validar=ad;
+          this.block=bl;
           console.log(this.validar);
+          console.log(this.block);
+          this.cargando=false;
         })
       })
 
