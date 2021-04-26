@@ -1,44 +1,36 @@
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-main">
+  <div>
+    <app-menu> </app-menu>
+  </div>
 
-    <div>
-      <app-menu> </app-menu>
-    </div>
+  <div class="d-flex justify-content-end" id="navbarColor01">
+    <ul class="navbar-nav mx-auto " *ngIf="user$ | async as user; else login">
+      <li class="nav-item " *ngIf = "!user">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
 
-    <div class="d-flex justify-content-end" id="navbarColor01">
-
-      <ul class="navbar-nav mx-auto " *ngIf="user$ | async as user; else login">
-        <li class="nav-item " *ngIf = "!user">
-          <a class="nav-link" routerLink="/login">Login</a>
-       </li>
-
-       <li class="nav-item">
+      <li class="nav-item">
         <a class = "nav-link"> {{user?.email}} </a>
       </li>
 
-        <li class="nav-item " *ngIf = "user">
-          <a href="#" class="nav-link" (click)="onLogout()">Salir</a>
-       </li>
+      <li class="nav-item " *ngIf = "user">
+        <a href="#" class="nav-link" (click)="onLogout()">Salir</a>
+      </li>
 
-        <li class="nav-item " *ngIf = "!user">
+      <li class="nav-item " *ngIf = "!user">          
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+    </ul>
+    <ng-template #login >
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item ">
           <a class="nav-link" routerLink="/register">Register</a>
-       </li>
+         </li>
       </ul>
-       
-
-      <ng-template #login >
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/login">Login</a>
-         </li>
-
-         <li class="nav-item ">
-          <a class="nav-link" routerLink="/register">Register</a>
-         </li>
-        </ul>
-      </ng-template>
-
-
-    </div>
-  </nav>
+    </ng-template>
+  </div>
+</nav>
 
