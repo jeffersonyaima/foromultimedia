@@ -14,8 +14,8 @@ declare var jQuery: any;
 export class ForoComponent implements OnInit {
 
   validar:boolean=false;
-  own_q:boolean=true;
-  own_a:boolean=true;
+  own_q:boolean=false;
+  own_a:boolean=false;
   block:boolean=false;
 
   cargando:boolean=true;

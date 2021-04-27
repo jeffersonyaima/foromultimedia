@@ -29,7 +29,9 @@ export class RegisterComponent implements OnInit {
       apellido:[''],
       nombreusuario:[''],
       password:[''],
-      admin:[false]
+      admin:[false],
+      block:[false],
+      N_report:[0]
     });
   }
 

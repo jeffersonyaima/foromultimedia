@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
 
-export interface Usuarios{
+export interface Lista_Usuarios{
   email:string;
   name:string;
   apellido:string;
@@ -10,6 +11,8 @@ export interface Usuarios{
   id: string;
   password:string;
   admin:Boolean;
+  block:Boolean;
+  N_report:number;
   
 }
 
@@ -19,16 +22,18 @@ export class FirestoreService {
 
   correo:any;
 
+  array_usuarios:Observable<Lista_Usuarios[]> = null as any;
 
-  usuarios!: Observable<Usuarios>;
-  private coleccionUsuarios!: AngularFirestoreCollection<Usuarios>;
+
+  private coleccionUsuarios!: AngularFirestoreCollection<Lista_Usuarios>;
 
   constructor(private readonly firestore: AngularFirestore) {
-    this.coleccionUsuarios = firestore.collection<Usuarios>('userlist');
+    this.coleccionUsuarios = firestore.collection<Lista_Usuarios>('userlist');
+    this.getUsuario();
    }
 
 
-  async guardarusuario(registerForm: Usuarios): Promise<void>{
+  async guardarusuario(registerForm: Lista_Usuarios): Promise<void>{
 
     return new Promise(async (resolve, reject)=>{
       try{
@@ -62,24 +67,15 @@ export class FirestoreService {
     return respuesta;
    }
 
-
-
-
-
-   //Crea un nuevo usuario
-   public registrarUsuario(data: Usuarios) {
-    return this.firestore.collection('usuario').add(data);
-   }
-
-   //Obtiene un gato
-  public getUsuario(name: string) {
-    return this.firestore.collection('usuarios').doc(name).snapshotChanges();
+   
+   /* Para leer toda la coleccion userlist y ponerlo en lista*/
+  private getUsuario():void {
+    this.array_usuarios=this.coleccionUsuarios.snapshotChanges().pipe(
+      map(actions => actions.map(a => a.payload.doc.data() as Lista_Usuarios))
+    )
+    
   }
-  //Obtiene todos los gatos
-  public getUsuarios() {
-    return this.firestore.collection('usuarios').snapshotChanges();
-  }
-  //Actualiza un gato
+
   public updateUsuario(name: string, data: any) {
     return this.firestore.collection('usuarios').doc(name).set(data);
   }
