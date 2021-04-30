@@ -2,6 +2,12 @@
   margin:0 px;
   padding:0 px;
 }
+#precarga{
+  display: block;
+  position: fixed;
+  top: 30%;
+  left: 32%;
+}
 
 .contenido_derecha{
   margin: 5%;
@@ -38,6 +44,8 @@
 #pantalla{
   display:flex;
   justify-content: space-between;
+  opacity: 0;
+  transition: 15s;
 }
 
 .cuadricula{

@@ -25,10 +25,9 @@ export class MenuComponent implements OnInit {
     (function ($) {
       $(document).ready(function(){
         $("#slide_nav_button").click(function(){
-        $('#slide_menu').animate({width:'toggle'},20);
+          $('#slide_menu').animate({width:'toggle'},20);
         });
-        });
-
+      });
     })(jQuery);
 
   }

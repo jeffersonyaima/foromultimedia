@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-animacion',
@@ -40,6 +41,12 @@ export class AnimacionComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    (function ($) {
+      $(window).on("load",function(){
+        $("#pantalla").css("opacity", 1)
+        $("#precarga").delay(2500).fadeOut("slow");
+      });
+    })(jQuery);
   }
 
 }

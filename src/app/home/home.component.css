@@ -10,7 +10,7 @@
 #precarga{
   display: block;
   position: fixed;
-  top: 10%;
+  top: 30%;
   left: 32%;
 }
 
@@ -41,7 +41,6 @@ footer{
   bottom: 0;
 }
 .sec{
-  
   height: 500px;
   background-position: center bottom;
   background-repeat: no-repeat;
