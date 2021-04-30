@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var jQuery: any;
 
-
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -29,9 +27,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     (function ($) {
-
-      
-
+      $(window).on("load",function(){
+        $(".container").css("opacity", 1)
+        $("#precarga").delay(2500).fadeOut("slow");
+      });
     })(jQuery);
 
   }
