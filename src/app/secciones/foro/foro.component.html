@@ -79,45 +79,49 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-          <form>
-            <div class="form-group ">
-              <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder="Haz tu Pregunta!" cols="65" > </textarea>
+          <form (ngSubmit)="algo()" [formGroup]="preguntaForm">
+            <div class="form-group">
+              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
             </div>
           </form>
         </div>
-        <!-- Modal footer -->
-        <div class="modal-footer d-flex justify-content-around mt-2">
-          <div>
-            <button type="button" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Publicar</span></button>
-          </div>
-          <div>
-            <label for="ciudad"></label>
-            <select class="custom-select color-modales txt-blanco">
-              <option value="TE">Cortos y Guiones</option>
-              <option value="VA">Animacion 2D y 3D</option>
-              <option value="BA">Audio y Video</option>
-              <option value="M">Aplicacion y Entornos Virtuales</option>
-              <option value="M">Programacion</option>
-            </select>
-          </div>
-        </div>
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-around mt-2">
+            <form (ngSubmit)="algo()" [formGroup]="preguntaForm"> 
+              <div class="form-group ">
+                <label for="ciudad"></label>
+                <select  formControlName="seccion" class="form-control custom-select color-modales txt-blanco">
+                  <option value="guiones">Cortos y Guiones</option>
+                  <option value="animacion">Animacion 2D y 3D</option>
+                  <option value="audio">Audio y Video</option>
+                  <option value="virtual">Aplicacion y Entornos Virtuales</option>
+                  <option value="programacion">Programacion</option>
+                </select>
+              </div>
+
+              <div>
+                <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Publicar</span></button>
+              </div>
+            </form>
+          </div>      
+
       </div>
     </div>
   </div>
   <div class="tab-content">
     <div id="Cortos-guiones" class="container tab-pane active">
       <br>
-      <div class="contenedor-pregunta" data-toggle="tab" href="#home">
-        <div class="container">
+      <div *ngFor= "let item of preguntas$ | async"  class="contenedor-pregunta mb-5" data-toggle="tab" href="#home">
+        <div *ngIf="item.seccion==='guiones'" class="container">
           <div class="row">
             <div class="col-10 ">
               <div class="margin_pregunta">
-                <p class="pregunta" >¿Herramientas para hacer un guion?</p>
+                <p class="pregunta" >{{item.pregunta}}</p>
               </div>
             </div>
             <div class="col-2 ">
               <div class="Botones_pregunta1">
-                <div *ngIf="own_q">
+                <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#Editar1">Editar</button>
                   <div class="modal fade fondo-ng" id="Editar1">
@@ -132,24 +136,25 @@
                         <div class="modal-body">
                           <form>
                             <div class="form-group">
-                              <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                              <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" >{{item.pregunta}} </textarea>
                             </div>
                           </form>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
-                          <div class="Agregar_Boton">
+                          <div class="Agregar_Boton d-flex justify-content-around">
                             <button type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Editar</span></button>
+                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div *ngIf="validar && !own_q"  >
-                  <button type="button" class="btn btn-primary">Eliminar</button>
+                <div *ngIf="validar && item.usuario != nom_usua"  >
+                  <button (click)="adminElim_Pregunta(item.id)" type="button" class="btn btn-primary">Eliminar</button>
                 </div>
-                <div *ngIf="!validar && !own_q" >
+                <div *ngIf="!validar && item.usuario != nom_usua" >
                   <button type="button" class="btn btn-primary">Reportar</button>
                 </div>
               </div>
@@ -158,7 +163,7 @@
         </div>
 
         <div class="footer_pregunta">
-          <div><input type=»text» readonly=»readonly» /></div>
+          <div>{{item.usuario}}</div>
           <div><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Respuestas</button></div>
           <div><input type=»text» readonly=»readonly» /></div>
         </div>

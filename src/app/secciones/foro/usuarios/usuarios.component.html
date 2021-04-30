@@ -32,7 +32,7 @@
                             <td>{{item.nombreusuario}} </td>
                             <td>{{item.N_report}}</td>
                             <td>  <button  class="btn btn-primary btn-sm btn-redo"> Bloquear</button> </td>
-                            <td>  <button  class="btn btn-primary btn-sm btn-redo"> Eliminar </button> </td>
+                            <td *ngIf="item.N_report>5">  <button (click)="eliminarUsuario(item.email)" class="btn btn-primary btn-sm btn-redo"> Eliminar </button> </td>
                           </tr>
                       
                         </tbody>

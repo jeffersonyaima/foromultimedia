@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ForoRoutingModule } from './foro-routing.module';
 import { ForoComponent } from './foro.component';
+import { ReactiveFormsModule} from '@angular/forms'
 
 
 
@@ -10,7 +11,8 @@ import { ForoComponent } from './foro.component';
   declarations: [ForoComponent],
   imports: [
     CommonModule,
-    ForoRoutingModule
+    ForoRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ForoModule { }

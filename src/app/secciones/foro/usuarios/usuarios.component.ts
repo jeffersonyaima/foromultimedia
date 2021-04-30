@@ -18,11 +18,15 @@ export class UsuariosComponent implements OnInit {
 
 
   public user$: Observable<any> = this.authSvc.afAuth.user;
-  
+    
 
   constructor(private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore) {
     
-   }
+  }
+
+  eliminarUsuario(correo:string){
+    this.firestoreService.adminEliminaUsuario(correo);
+  }
 
   ngOnInit(): void {
   }
