@@ -1,177 +1,182 @@
-  <section id="pantalla" >
-
-    <div class="izquierdo">
-      <div class="icono mt-5">
-        <img  src="../../../assets/guiones2.png" alt="" class="ImgRedonda">
-      </div>
-      <div class="botones">
-        <ul >
-          <li *ngIf="validar"><button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
-          <div class="modal fade" id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Editar Ejemplo</h4>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div class="modal_imagen">
-                    <img  class="imagen_cortos" src="../../../assets/guiones2.png" alt="">
-                  </div>
-                  <br>
-                  <h5 class="modal-title">Buscar ID:</h5>
-                  <br>
-                  <div class=Buscar>
-                    <div class="Texto_Buscar">
-                      <input type="text" class="form-control" placeholder=" id">
-                    </div>
-                    <div class="Boton_Buscar">
-                      <button type="button" class="btn-primary">Buscar</button>
-                    </div>
-                  </div>
-                  <br>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <li *ngIf="validar"><button  type="button" class="btn btn-primary  mt-3 btn-redo" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
-
-          <div class="modal fade" id="myModal2">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Agregar Ejemplo</h4>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div >
-                    <input type="file" id="files" name="files[]" multiple />
-                    <output id="list"></output>
-
-                    <script>
-                      function handleFileSelect(evt) {
-                        var files = evt.target.files; // FileList object
-
-                        // files is a FileList of File objects. List some properties.
-                        var output = [];
-                        for (var i = 0, f; f = files[i]; i++) {
-                          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                      f.size, ' bytes, last modified: ',
-                                      f.lastModifiedDate.toLocaleDateString(), '</li>');
-                        }
-                        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                      }
-
-                      document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                    </script>
-                  </div>
-                  <br>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <li *ngIf="validar"> <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
-
-          <div class="modal fade" id="myModal3">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Eliminar Ejemplo</h4>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <h5 class="modal-title">Buscar ID:</h5>
-                  <br>
-                  <div class=Buscar>
-                    <div class="Texto_Buscar">
-                      <input type="text" class="form-control" placeholder=" id">
-                    </div>
-                    <div class="Boton_Buscar">
-                      <button type="button" class="btn-primary">Buscar</button>
-                    </div>
-                  </div>
-
-                  <br>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a eliminar"></textarea>
-
-
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <div class="Eliminar_Boton">
-                    <button type="button" class="btn-primary" data-dismiss="modal">Eliminar</button>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </ul>
-      </div>
+<section id="pantalla" >
+  <div class="izquierdo">
+    <div class="icono mt-5">
+      <img  src="../../../assets/guiones2.png" alt="" class="ImgRedonda">
     </div>
+    <div class="botones">
+      <ul >
+        <li *ngIf="validar"><button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
 
-    <div class="derecha">
-      <div class="contenido_derecha">
-        <h1>Cortos y Guiones</h1>
-        <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
-          <br>
-          Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
-        </p>
-        <br>
-        <h3>Proyectos</h3>
-        <br>
-        <div class="scroll">
-          <div class="cuadricula">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-            <div class="item">4</div>
-            <div class="item">5</div>
-            <div class="item">6</div>
-            <div class="item">7</div>
-            <div class="item">8</div>
-            <div class="item">9</div>
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Editar Ejemplo</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <div class="modal_imagen">
+                  <img  class="imagen_cortos" src="../../../assets/guiones2.png" alt="">
+                </div>
+                <br>
+                <h5 class="modal-title">Buscar ID:</h5>
+                <br>
+                <div class=Buscar>
+                  <div class="Texto_Buscar">
+                    <input type="text" class="form-control" placeholder=" id">
+                  </div>
+                  <div class="Boton_Buscar">
+                    <button type="button" class="btn-primary">Buscar</button>
+                  </div>
+                </div>
+                <br>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+              </div>
+
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
+              </div>
+
+            </div>
           </div>
         </div>
 
+        <li *ngIf="validar"><button  type="button" class="btn btn-primary  mt-3 btn-redo" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
+
+        <div class="modal fade" id="myModal2">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Agregar Ejemplo</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+
+                <div >
+                  <div class="contenedor">
+                    <div class="contenedor_formulario">
+                      <h1 class="is-size-1">Subir archivos a Cloud Storage</h1>
+                      <p class="download" *ngIf="finalizado">URL de descarga: <a href="{{ URLPublica }}" target="_blank">Descargar</a></p>
+                      <form  (ngSubmit)="subirArchivo()" [formGroup]="archivoForm">
+                        <div class="file has-name is-boxed">
+                          <label class="file-label">
+                            <input class="file-input" type="file" formControlName="archivo" (change)="cambioArchivo($event)">
+                            <span class="file-cta">
+                              <span class="file-label">
+                                Elegir un archivo…
+                              </span>
+                            </span>
+                            <span class="file-name">
+                              {{ mensajeArchivo }}
+                            </span>
+                          </label>
+                        </div>
+                        <hr>
+                        <progress *ngIf="porcentaje > 0 && porcentaje < 100" class="progress is-large is-success" value="{{porcentaje}}" max="100">{{porcentaje}}%</progress>
+                        <button [ngClass]="{'button': true, 'is-success': true, 'is-large': true, 'is-loading': porcentaje > 0 && porcentaje < 100}" [disabled]="!archivoForm.valid && (porcentaje > 0 && porcentaje < 100)">Subir archivo</button>
+                      </form>
+                    </div>
+                  </div>
+
+                </div>
+                <br>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+              </div>
+
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <li *ngIf="validar"> <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
+
+        <div class="modal fade" id="myModal3">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Eliminar Ejemplo</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <h5 class="modal-title">Buscar ID:</h5>
+                <br>
+                <div class=Buscar>
+                  <div class="Texto_Buscar">
+                    <input type="text" class="form-control" placeholder=" id">
+                  </div>
+                  <div class="Boton_Buscar">
+                    <button type="button" class="btn-primary">Buscar</button>
+                  </div>
+                </div>
+
+                <br>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a eliminar"></textarea>
+
+
+              </div>
+
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <div class="Eliminar_Boton">
+                  <button type="button" class="btn-primary" data-dismiss="modal">Eliminar</button>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="derecha">
+    <div class="contenido_derecha">
+      <h1>Cortos y Guiones</h1>
+      <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
+        <br>
+        Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
+      </p>
+      <br>
+      <h3>Proyectos</h3>
+      <br>
+      <div class="scroll">
+        <div class="cuadricula">
+          <div class="item">1</div>
+          <div class="item">2</div>
+          <div class="item">3</div>
+          <div class="item">4</div>
+          <div class="item">5</div>
+          <div class="item">6</div>
+          <div class="item">7</div>
+          <div class="item">8</div>
+          <div class="item">9</div>
+        </div>
       </div>
 
     </div>
 
-  </section>
+  </div>
 
-  <div class="fondonegro"></div>
+</section>
 
+<div class="fondonegro"></div>

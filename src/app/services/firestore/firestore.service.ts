@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
+import { ActionSequence } from 'selenium-webdriver';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 export interface Lista_Usuarios{
@@ -25,6 +27,12 @@ export interface Lista_Preguntas{
   id:string;
 }
 
+export interface Lista_Respuestas{
+  id:string;
+  id_p:string;
+  repuestas:string;
+}
+
 
 
 @Injectable()
@@ -34,15 +42,21 @@ export class FirestoreService {
   nom_usua:string = "";
 
   array_usuarios:Observable<Lista_Usuarios[]> = null as any;
-  array_preguntas:Observable<Lista_Preguntas[]> = null as any;
+  array_preguntasGuiones:Observable<Lista_Preguntas[]> = null as any;
+  array_preguntasAnim:Observable<Lista_Preguntas[]> = null as any;
+  array_preguntasAudio:Observable<Lista_Preguntas[]> = null as any;
+  array_preguntasVirtual:Observable<Lista_Preguntas[]> = null as any;
+  array_preguntasProgramacion:Observable<Lista_Preguntas[]> = null as any;
 
 
   private coleccionUsuarios!: AngularFirestoreCollection<Lista_Usuarios>;
   private coleccionPreguntas!: AngularFirestoreCollection<Lista_Preguntas>;
+  private coleccionRespuestas!: AngularFirestoreCollection<Lista_Respuestas>;
 
-  constructor(private readonly firestore: AngularFirestore, private authSvc:AuthService) {
+  constructor(private storage: AngularFireStorage, private readonly firestore: AngularFirestore, private authSvc:AuthService) {
     this.coleccionUsuarios = firestore.collection<Lista_Usuarios>('userlist');
     this.coleccionPreguntas = firestore.collection<Lista_Preguntas>('preguntas');
+    this.coleccionRespuestas = firestore.collection<Lista_Respuestas>('respuestas');
     this.getUsuario();
     this.getPreguntas();
 
@@ -87,6 +101,24 @@ export class FirestoreService {
   });
 }
 
+async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
+
+  return new Promise(async (resolve, reject)=>{
+    try{
+
+      const data = respuestaForm;
+      const result = this.coleccionRespuestas.doc(respuestaForm.id).set(data);
+      resolve(result);
+      console.log("Respuesta enviado a FireStore!");
+    }
+    catch(error){
+      reject(error.message);
+    }
+
+  });
+}
+
+
 
 
 
@@ -116,12 +148,35 @@ export class FirestoreService {
   }
 
 
-  private getPreguntas():void {
-    this.array_preguntas=this.coleccionPreguntas.snapshotChanges().pipe(
+  /*private getPreguntas():void {
+    this.array_preguntasGuiones=this.coleccionPreguntas.snapshotChanges().pipe(
       map(actions => actions.map(a => a.payload.doc.data() as Lista_Preguntas))
     )
     
-  }
+  }*/
+
+  private getPreguntas(): void{
+    this.array_preguntasGuiones=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','guiones')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
+    )
+
+    this.array_preguntasAnim=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','animacion')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
+    )
+
+    this.array_preguntasAudio=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','audio')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
+    )
+
+    this.array_preguntasVirtual=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','virtual')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
+    )
+
+    this.array_preguntasProgramacion=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','programacion')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
+    )
+   }
+
 
   adminEliminaUsuario(correo:string): Promise<void>{
     return new Promise(async (resolve, reject)=>{
@@ -168,4 +223,19 @@ export class FirestoreService {
     return this.firestore.collection('usuarios').doc(name).set(data);
   }
 
+
+
+  /*------STORAGE------ */
+
+  //Tarea para subir archivo
+  public tareaCloudStorage(nombreArchivo: string, datos: any) {
+    return this.storage.upload(nombreArchivo, datos);
+  }
+
+  //Referencia del archivo
+  public referenciaCloudStorage(nombreArchivo: string) {
+    return this.storage.ref(nombreArchivo);
+  }
+
 }
+

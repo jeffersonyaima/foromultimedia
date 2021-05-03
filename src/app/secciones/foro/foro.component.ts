@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FirestoreService } from 'src/app/services/firestore/firestore.service';
+import { FirestoreService, Lista_Preguntas } from 'src/app/services/firestore/firestore.service';
 import {FormGroup, FormBuilder} from '@angular/forms'
 import { AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 declare var jQuery: any;
 
@@ -14,9 +15,12 @@ declare var jQuery: any;
   styleUrls: ['./foro.component.css'],
   providers:[FirestoreService]
 })
+
+
+
 export class ForoComponent implements OnInit {
 
-  preguntas$=this.firestoreService.array_preguntas; 
+  preguntasGuiones$=this.firestoreService.array_preguntasGuiones;
   nom_usua:string = "";
 
   validar:boolean=false; /*Validar si es admin */
@@ -28,6 +32,9 @@ export class ForoComponent implements OnInit {
 
 
   public preguntaForm= new FormGroup({
+  })
+
+  public respuestaForm= new FormGroup({
   })
 
   
@@ -57,6 +64,7 @@ export class ForoComponent implements OnInit {
       }
       else console.log('NO ESTA LOGEADO');
     })
+   
   }
 
   private initForm():void{
@@ -64,6 +72,10 @@ export class ForoComponent implements OnInit {
       pregunta:[''],
       seccion:['']
     });
+
+    this.respuestaForm=this.fb.group({
+      respuesta:['']
+    })
   }
 
   ngOnInit(): void {
@@ -91,7 +103,7 @@ export class ForoComponent implements OnInit {
   }
 
 
-  async algo(){
+  async agregarPregunta(){
     console.log("El foro esta conectado con la base de datos");
     console.log('registro',this.preguntaForm.value);
 
@@ -105,6 +117,18 @@ export class ForoComponent implements OnInit {
     this.router.navigate(['/foro']);
 
   }
+
+  async agregarRespuesta(){
+    console.log("Prueba a agrgar respuesta");
+   
+    /*const id = this.firestore.createId();
+    const formValue = this.respuestaForm.value;
+    const FormvalueId = {id,...formValue};
+    const FormValueReady = {id_p,...FormvalueId};
+    await this.firestoreService.guardarrespuesta(FormValueReady);*/
+  }
+
+
   
 
 }

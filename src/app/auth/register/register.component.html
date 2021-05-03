@@ -1,9 +1,18 @@
 
 <div class="fondoblanco">
+    <div *ngIf="registroInvalido" class="container">
+        <div class="row  mx-auto d-flex justify-content-center ">
+          <div class="col-4 d-flex justify-content-center mt-5">
+            <h1>Registro Invalido </h1>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-center mb-5 mt-5">
+            <button (click)="redireccionar()" type="button" class="btn btn-primary col-2 mx-5 mb-5 btn-redo">Volver al Registro</button>
+        </div>
+    
+     </div>
 
-
-
-    <div class="container">
+    <div *ngIf="!registroInvalido" class="container">
         <div class="row">
             <div class="col-12 mx-auto mt-5">
                 <div class="card colorcuadro mb-3">
@@ -13,27 +22,28 @@
 
                             <div class="form-group colorblanco d-flex justify-content-center mt-5 col-8">
                                 <input  class="form-control form-control-lg col-11" formControlName="email"
-                                placeholder="Correo">
+                                placeholder="Correo" [class]="isValidField('email')">
+                        
                             </div>
 
                             <div class="form-group colorblanco d-flex justify-content-center mt-5 col-8">
                                 <input type="text" class="form-control form-control-lg col-11" formControlName="name"
-                                placeholder="Nombre">
+                                placeholder="Nombre" [class]="isValidField('name')">
                             </div>
 
                             <div class="form-group colorblanco d-flex justify-content-center mt-5 col-8">
                               <input type="text" class="form-control form-control-lg col-11" formControlName="apellido"
-                                placeholder="Apellido">
+                                placeholder="Apellido" [class]="isValidField('apellido')">
                             </div>
 
                             <div class="form-group colorblanco d-flex justify-content-center mt-5 col-8">
                                 <input type="text" class= "form-control form-control-lg col-11" formControlName="nombreusuario"
-                                placeholder="Username">
+                                placeholder="Username" [class]="isValidField('nombreusuario')">
                             </div>
 
                             <div class="form-group colorblanco d-flex justify-content-center mt-5 col-8">
                                 <input class="form-control form-control-lg col-11" formControlName="password"
-                                placeholder="Contraseña">
+                                placeholder="Contraseña" [class]="isValidField('password')">
                             </div>
 
                             <div class="row d-flex justify-content-center mb-5 mt-5">

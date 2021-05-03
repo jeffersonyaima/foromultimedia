@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<main *ngIf ="!block && !cargando"  class="pagprin">
+<main *ngIf ="!block && !cargando"  class="pagprin mb-5">
   <h2 class="Titulo">Preguntas-secciones</h2>
   <div class="encabezado_foro">
     <!-- Nav tabs -->
@@ -79,15 +79,15 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-          <form (ngSubmit)="algo()" [formGroup]="preguntaForm">
+          <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
             <div class="form-group">
-              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" > Hola ??¡¡ </textarea>
             </div>
           </form>
         </div>
           <!-- Modal footer -->
           <div class="modal-footer d-flex justify-content-around mt-2">
-            <form (ngSubmit)="algo()" [formGroup]="preguntaForm"> 
+            <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm"> 
               <div class="form-group ">
                 <label for="ciudad"></label>
                 <select  formControlName="seccion" class="form-control custom-select color-modales txt-blanco">
@@ -108,11 +108,12 @@
       </div>
     </div>
   </div>
+
   <div class="tab-content">
     <div id="Cortos-guiones" class="container tab-pane active">
       <br>
-      <div *ngFor= "let item of preguntas$ | async"  class="contenedor-pregunta mb-5" data-toggle="tab" href="#home">
-        <div *ngIf="item.seccion==='guiones'" class="container">
+      <div *ngFor= "let item of preguntasGuiones$ | async"  class="contenedor-pregunta mb-5" data-toggle="tab" href="#home">
+        <div  class="container">
           <div class="row">
             <div class="col-10 ">
               <div class="margin_pregunta">
@@ -164,12 +165,12 @@
 
         <div class="footer_pregunta">
           <div>{{item.usuario}}</div>
-          <div><button class="btn btn-primary" data-toggle="collapse" data-target="#demo">Respuestas</button></div>
+          <div><button class="btn btn-primary" data-toggle="collapse"  [attr.data-target]="'#demo'+ item.id">Respuestas</button></div>
           <div><input type=»text» readonly=»readonly» /></div>
         </div>
-        <div id="demo" class="collapse">
+        
+        <div id="demo{{item.id}}" class="collapse">
           <div class="scroll">
-
             <div class="respuestas">
               <div class="container">
                 <div class="row">
@@ -226,33 +227,36 @@
               </div>
 
               <div class="agregar_respuesta">
-                <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#agregar1">Agregar Respuesta</button>
+                <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="agregar1">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
                 <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <form>
+                      <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
                         <div class="form-group">
-                          <textarea name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                          <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" > </textarea>
                         </div>
                       </form>
-                    </div>
+                    </div>          
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                      <div class="Agregar_Boton">
-                        <button type="button" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      </div>
+                      <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
+                        <div class="form-group">
+                          <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Agregar</span></button>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
+
               <br>
 
             </div>
@@ -587,7 +591,7 @@
 
   </div>
 
-  <div *ngIf="validar" class="row d-flex justify-content-start mb-5 mt-5">
+  <div *ngIf="validar" class="row d-flex justify-content-start mb-5 mt-2">
     <a class= "btn btn-verde col-2 mx-5 btn-redo" [routerLink]="['/usuarios']">
       <p>Ver Usuarios</p>
     </a>
