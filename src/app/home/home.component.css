@@ -16,7 +16,7 @@
 
 .container{
   opacity: 0;
-  transition: 15s;
+  transition: 10s;
 }
 
 footer{
@@ -87,7 +87,7 @@ footer{
 }
 
 
-/* Extra small devices (phones, 600px and down) */
+/* Extra small devices (phones, 600px and down)*/
 @media only screen and (max-width: 600px) {
   #logo3d {
     max-width: 75%;
@@ -134,14 +134,14 @@ footer{
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) and (max-width: 767px) {
   #logo3d {
-    max-width: 75%;
+    max-width: 95%;
     max-height: 100%;
     margin-top: 15%;
   }
   #logo2d {
-    max-width: 60%;
+    max-width: 70%;
     max-height: auto;
     margin-top: 15%;
   }
@@ -152,36 +152,36 @@ footer{
   #logoguiones{
     width: 75%;
     height: auto;
-    margin-top: 40%;
+    margin-top: 110%;
   }
   #logoaudio{
     width: 88%;
     height: auto;
-    margin-top: 40%;
+    margin-top: 115%;
   }
   #logoprogramacion{
     width: 100%;
     height: auto;
-    margin-top: 40%;
+    margin-top: 110%;
   }
   #logorealidad{
     width: 80%;
     height: auto;
-    margin-top: 40%;
+    margin-top: 110%;
   }
   .sec{
     background-image: url("../../assets/mesa2.png");
-    height: 200px;
+    height: 300px;
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
-    margin-top: 3.5%;
+    margin-top:7%;
   } 
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 992px) {
   #logo3d {
     max-width: 65%;
     max-height: 100%;
@@ -221,12 +221,12 @@ footer{
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
-    margin-top: 2.5%;
+    margin-top: 21.5%;
   } 
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px )and (max-width: 1199px){
   #logo3d {
     max-width: 65%;
     max-height: 100%;
@@ -242,6 +242,53 @@ footer{
   #logoguiones{
     width: 65%;
     height: auto;
+    margin-top: 3%;
+  }
+  #logoaudio{
+    
+    width: 78%;
+    height: auto;
+    margin-top: 5%;
+  }
+  #logoprogramacion{
+    width: 90%;
+    height: auto;
+    margin-top: 3%;
+  }
+  #logorealidad{
+    width: 70%;
+    height: auto;
+    margin-top: 3%;
+  }
+  .sec{
+    background-image: url("../../assets/mesa2.png");
+    height: 250px;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    margin-top: 9.5%;
+  } 
+} 
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px)and (max-width: 1439px) {
+  #logo3d {
+    max-width: 65%;
+    max-height: 100%;
+  }
+  #logo2d {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #lampara {
+    max-width: 50%;
+    max-height: auto;
+  }
+  #logoguiones{
+    
+    width: 65%;
+    height: auto;
     margin-top: -10%;
   }
   #logoaudio{
@@ -255,6 +302,7 @@ footer{
     margin-top: -15%;
   }
   #logorealidad{
+  
     width: 70%;
     height: auto;
     margin-top: -10%;
@@ -268,10 +316,10 @@ footer{
     position: relative;
     margin-top: 4.2%;
   } 
-} 
+}
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+/* Extra Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1440px) {
   #logo3d {
     max-width: 65%;
     max-height: 100%;
@@ -281,10 +329,12 @@ footer{
     max-height: auto;
   }
   #lampara {
+    background-color: red;
     max-width: 50%;
     max-height: auto;
   }
   #logoguiones{
+    
     width: 65%;
     height: auto;
     margin-top: -10%;
@@ -300,6 +350,7 @@ footer{
     margin-top: -15%;
   }
   #logorealidad{
+  
     width: 70%;
     height: auto;
     margin-top: -10%;
@@ -311,7 +362,7 @@ footer{
     background-repeat: no-repeat;
     background-size: 100%;
     position: relative;
-    margin-top: 2.5%;
+    margin-top: 26.5%;
   } 
 }
 

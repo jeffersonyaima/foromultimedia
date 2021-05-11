@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
+declare var jQuery: any;
 
 @Component({
   selector: 'app-programacion',
@@ -42,6 +43,9 @@ export class ProgramacionComponent implements OnInit {
 
   
   ngOnInit(): void {
+    (function ($) {
+     
+    })(jQuery);
   }
 
 }

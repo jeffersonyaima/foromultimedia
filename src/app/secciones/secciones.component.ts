@@ -12,10 +12,7 @@ export class SeccionesComponent implements OnInit {
 
   ngOnInit(): void {
     (function ($) {
-      $(window).on("load",function(){
-        $(".container").css("opacity", 1)
-        $("#precarga").delay(2500).fadeOut("slow");
-      });
+    
     })(jQuery);
   }
 

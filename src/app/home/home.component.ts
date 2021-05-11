@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   imgsrcaudio : any;
   imgsrcprogramacion : any;
   imgsrcrealidad : any;
+
   constructor() { 
     this.imgsrc3d='../../assets/3D.png', 
     this.imgsrc2d='../../assets/2D.png',
