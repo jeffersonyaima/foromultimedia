@@ -18,7 +18,14 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFirestore } from '@angular/fire/firestore';
-import {AngularFireDatabaseModule, AngularFireDatabase, AngularFireList} from '@angular/fire/database'
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import {AngularFireDatabaseModule } from '@angular/fire/database';
+
+/*cloud storage*/
+
+import { UploadFormComponent } from './components/upload-form/upload-form.component';
+import { UploadListComponent } from './components/upload-list/upload-list.component';
+import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAKuO8ExX3hnuV9EgxmikNbinnflHAgaQw",
@@ -31,9 +38,9 @@ export const firebaseConfig = {
 };
 
 
-import { GuionesComponent } from './secciones/guiones/guiones.component';
-import { GuionesModule } from './secciones/guiones/guiones.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DropzoneDirective } from './dropzone.directive';
 
 
 
@@ -41,7 +48,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent,MenuComponent],
+  declarations: [AppComponent, NavbarComponent,MenuComponent,UploadFormComponent,UploadListComponent,UploadDetailsComponent, DropzoneDirective],
   imports: [
     AppRoutingModule,
     BrowserModule,
@@ -52,6 +59,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     RouterModule,
     AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
   ],
   providers: [AngularFirestore],
   bootstrap: [AppComponent]

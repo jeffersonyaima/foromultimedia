@@ -18,20 +18,6 @@
 
               <!-- Modal body -->
               <div class="modal-body">
-                <div class="modal_imagen">
-                  <img  class="imagen_cortos" src="../../../assets/guiones2.png" alt="">
-                </div>
-                <br>
-                <h5 class="modal-title">Buscar ID:</h5>
-                <br>
-                <div class=Buscar>
-                  <div class="Texto_Buscar">
-                    <input type="text" class="form-control" placeholder=" id">
-                  </div>
-                  <div class="Boton_Buscar">
-                    <button type="button" class="btn-primary">Buscar</button>
-                  </div>
-                </div>
                 <br>
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
               </div>
@@ -102,7 +88,7 @@
           </div>
         </div>
 
-        <li *ngIf="validar"> <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal3">Eliminar ejemplo</button></li>
+        <li *ngIf="validar"> <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal3">Editar ejemplo</button></li>
 
         <div class="modal fade" id="myModal3">
           <div class="modal-dialog">
@@ -110,7 +96,7 @@
 
               <!-- Modal Header -->
               <div class="modal-header">
-                <h4 class="modal-title">Eliminar Ejemplo</h4>
+                <h4 class="modal-title">Editar Ejemplo</h4>
                 <button type="button" class="close" data-dismiss="modal">×</button>
               </div>
 
@@ -137,7 +123,8 @@
               <!-- Modal footer -->
               <div class="modal-footer">
                 <div class="Eliminar_Boton">
-                  <button type="button" class="btn-primary" data-dismiss="modal">Eliminar</button>
+                  <button type="button" class="btn-primary" id="eliminar" data-dismiss="modal">Editar</button>
+                  <button type="button" class="btn-primary" id="editar" data-dismiss="modal">Eliminar</button>
                 </div>
 
               </div>
@@ -180,3 +167,5 @@
 </section>
 
 <div class="fondonegro"></div>
+
+

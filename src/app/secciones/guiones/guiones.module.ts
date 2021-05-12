@@ -7,7 +7,9 @@ import { GuionesComponent } from './guiones.component';
 
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 
-
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+import { FileUpload } from '../../models/file-upload.model';
 
 @NgModule({
   declarations: [GuionesComponent],
