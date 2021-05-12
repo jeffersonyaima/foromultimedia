@@ -16,7 +16,7 @@
   padding-right:20%;
   font-size: small;
 
- 
+
 }
 body {
   background: #f8fafb ;
@@ -69,10 +69,10 @@ main {
   font-size: 100%;
   padding-left:2%;
   padding-right:2%;
-  
-  
+
+
 }
-  
+
 
 
 .categorias{
@@ -347,4 +347,29 @@ color:white;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.dos_botones{
+  display: flex;
+  justify-content: space-between;
+}
+
+#eliminar{
+  margin-left: 120%;
+  transform: translateX(-120%);
+}
+
+#editar{
+  margin-left: 80%;
+}
+.dos_botoness{
+  display: flex;
+  justify-content: space-around;
+  margin: 2%;
+}
+.eliminar1{
+  margin-right: 120%;
+  transform: translateX(-120%);
+}
+.editar1{
+  margin-right: 80%;
 }
