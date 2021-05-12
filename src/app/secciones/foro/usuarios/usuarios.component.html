@@ -1,55 +1,52 @@
 <div class="container">
     <div class="row">
-        <div class="card col-12 mt-5">
+        <div class="card col-12 mt-5 mb-5">
             <div class="card-body">
                 <form class="row">
-                    <div class="form-group mt-4 col-7">
+                    <div class="form-group mt-4 col-6">
+                      <form (ngSubmit)="buscarUsuarioenLista()" [formGroup]="buscarUsuarioForm"> 
                         <input type="text" class="form-control form-control-lg col-11" aria-label="username"
-                        placeholder="Username" formControlName="username">
+                        placeholder="Username" formControlName="nombreusuario">
+                      </form>
                     </div>
 
-                    <div class="col-2 mt-5">
-                        <button  class="btn btn-primary btn-redo"> Buscar </button>
+                    <div class="col-6 mt-5">
+                      <div class="container "> 
+                        <div class="row d-flex justify-content-around">
+                         <form (ngSubmit)="buscarUsuarioenLista()" [formGroup]="buscarUsuarioForm">
+                          <button  type="submit" class="btn btn-primary btn-redo "> Buscar </button>
+                         </form>
+                          <button (click)="verTodosUsuarios()" type="button" class="btn btn-primary btn-redo "> Ver todos </button>
+                        </div>
+                      </div>
                     </div>
 
                 </form>
 
                 <div class="row mt-5">
-
-                    <table class="table col-10">
-                        <thead>
-                          <tr>
-                          <th scope="col">#</th>
-                            <th scope="col">Nombre Usuario</th>
-                            <th scope="col">Numero de Reportes</th>
-                            <th scope="col">Bloquear</th>
-                            <th scope="col"> Eliminar</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr  *ngFor= "let item of usuario$ | async">
-                            <th scope="row">1</th>
-                            <td>{{item.nombreusuario}} </td>
-                            <td>{{item.N_report}}</td>
-                            <td>  <button  class="btn btn-primary btn-sm btn-redo"> Bloquear</button> </td>
-                            <td *ngIf="item.N_report>5">  <button (click)="eliminarUsuario(item.email)" class="btn btn-primary btn-sm btn-redo"> Eliminar </button> </td>
-                          </tr>
-                      
-                        </tbody>
-                    </table>
-
-                    <script>
-                      var tables = document.getElementsByTagName('table');
-                      var table = tables[tables.length - 1];
-                      var rows = table.rows;
-                      for(var i = 0, td; i < rows.length; i++){
-                          td = document.createElement('td');
-                          td.appendChild(document.createTextNode(i + 1));
-                          rows[i].insertBefore(td, rows[i].firstChild);
-                      }
-                  </script>
-
-                   
+                  <table  class="table col-10">
+                    <thead>
+                      <tr>
+                      <th scope="col">#</th>
+                        <th scope="col">Nombre Usuario</th>
+                        <th scope="col">Numero de Reportes</th>
+                        <th scope="col">Bloquear</th>
+                        <th scope="col"> Eliminar</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor= "let item of usuario$ | async;let i = index">
+                        <th scope="row">{{i}}</th>
+                        <td>{{item.nombreusuario}} </td>
+                        <td>{{item.N_report}}</td>
+                        <td *ngIf="!item.block">  <button  (click)="bloquearUsuario(item.email)" class="btn btn-primary btn-sm btn-redo"> Bloquear</button> </td>
+                        <td *ngIf="item.block">  <button  (click)="desbloquearUsuario(item.email)" class="btn btn-primary btn-sm btn-redo"> Desbloquear</button> </td>
+                        <td *ngIf="item.N_report<5"> <button (click)="eliminarUsuario(item.email)" class="btn btn-primary btn-sm btn-redo" disabled> Eliminar </button> </td>
+                        <td *ngIf="item.N_report>5">  <button (click)="eliminarUsuario(item.email)" class="btn btn-primary btn-sm btn-redo"> Eliminar </button> </td>
+                      </tr>
+                  
+                    </tbody>
+                </table>                       
             
                 </div>
 

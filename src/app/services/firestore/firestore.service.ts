@@ -5,6 +5,7 @@ import {map} from 'rxjs/operators';
 import { ActionSequence } from 'selenium-webdriver';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { EmailValidator } from '@angular/forms';
 
 
 export interface Lista_Usuarios{
@@ -25,14 +26,19 @@ export interface Lista_Preguntas{
   seccion:string;
   usuario:string;
   id:string;
+  Fecha:string;
 }
 
 export interface Lista_Respuestas{
   id:string;
   id_p:string;
-  repuestas:string;
+  respuesta:string;
+  usuario:string
 }
 
+export interface UpdatePregunta{
+  pregunta:string
+}
 
 
 @Injectable()
@@ -47,6 +53,10 @@ export class FirestoreService {
   array_preguntasAudio:Observable<Lista_Preguntas[]> = null as any;
   array_preguntasVirtual:Observable<Lista_Preguntas[]> = null as any;
   array_preguntasProgramacion:Observable<Lista_Preguntas[]> = null as any;
+  infoUsuarioBuscado:Observable<Lista_Usuarios[]> = null as any;
+
+  array_respuestas:Observable<Lista_Respuestas[]>=null as any;
+
 
 
   private coleccionUsuarios!: AngularFirestoreCollection<Lista_Usuarios>;
@@ -59,7 +69,6 @@ export class FirestoreService {
     this.coleccionRespuestas = firestore.collection<Lista_Respuestas>('respuestas');
     this.getUsuario();
     this.getPreguntas();
-
 
   }
 
@@ -175,7 +184,26 @@ async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
     this.array_preguntasProgramacion=this.firestore.collection('preguntas', ref=>ref.where("seccion",'==','programacion')).snapshotChanges().pipe(
       map(actions=> actions.map(a => a.payload.doc.data() as Lista_Preguntas))
     )
-   }
+  }
+
+  getRespuestas(idp:string):Observable<Lista_Respuestas[]>{
+    console.log(idp);
+    this.array_respuestas=this.firestore.collection('respuestas', ref=>ref.where("id_p",'==',idp)).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Respuestas))
+    )
+    console.log(this.array_respuestas);
+    return this.array_respuestas;
+
+  }
+
+  getUsuarioBuscado(nomusuario:string):Observable<Lista_Usuarios[]>{
+    console.log(nomusuario);
+    this.infoUsuarioBuscado=this.firestore.collection('userlist', ref=>ref.where("nombreusuario",'==',nomusuario)).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as Lista_Usuarios))
+    )
+    return this.infoUsuarioBuscado;
+
+  }
 
 
   adminEliminaUsuario(correo:string): Promise<void>{
@@ -204,6 +232,18 @@ async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
     }); 
   }
 
+  adminEliminaRespuesta(id:string): Promise<void>{
+    return new Promise(async (resolve, reject)=>{
+      try{
+          const result = await this.coleccionRespuestas.doc(id).delete();
+          resolve(result);
+      }
+      catch(err){
+        reject(err.message);
+      }
+    }); 
+  }
+
 
    
  eliminaPreguntaPropia(id:string): Promise<void>{
@@ -218,11 +258,63 @@ async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
     });
   }
 
+    
+ eliminaRespuestaPropia(id:string): Promise<void>{
+  return new Promise(async (resolve, reject)=>{
+    try{
+        const result = await this.coleccionRespuestas.doc(id).delete();
+        resolve(result);
+    }
+    catch(err){
+      reject(err.message);
+    }
+  });
+}
+
 
   public updateUsuario(name: string, data: any) {
     return this.firestore.collection('usuarios').doc(name).set(data);
   }
 
+  editarPregunta(id:string, preguntaActualizada:Lista_Preguntas){
+    console.log(preguntaActualizada.pregunta);
+    this.firestore.collection('preguntas').doc(id).update({
+        "pregunta":preguntaActualizada.pregunta
+    });
+     
+  }
+
+  editarRespuesta(id:string, respuestaActualizada:Lista_Respuestas){
+    console.log(respuestaActualizada.respuesta);
+    this.firestore.collection('respuestas').doc(id).update({
+        "respuesta":respuestaActualizada.respuesta
+    });
+     
+  }
+
+  adminBloqueaUsuario(emailenviado:string){
+
+    this.firestore.collection('userlist').doc(emailenviado).update({
+      "block":true
+    })
+
+    /*this.firestore.collection('userlist', ref=>ref.where("nombreusuario",'==',usuarioenviado)).get().subscribe((resultado)=>{
+      resultado.docs.forEach((item)=>{
+        let usuario :any = item.data();
+        this.firestore.collection('userlist').doc(usuario.email).update({
+          "block":true
+      });
+      })
+    })*/
+
+  }
+
+  adminDesbloqueaUsuario(emailenviado:string){
+
+    this.firestore.collection('userlist').doc(emailenviado).update({
+      "block":false
+    })
+  }
 
 
   /*------STORAGE------ */

@@ -6,8 +6,9 @@
   </div>
 </div>
 
-<main *ngIf ="!block && !cargando"  class="pagprin mb-5">
-  <h2 class="Titulo">Preguntas-secciones</h2>
+<div *ngIf ="!block && !cargando"  class="pagprin">
+  <div class="todo">
+  <h1 class="Titulo">Multi-Foro</h1>
   <div class="encabezado_foro">
     <!-- Nav tabs -->
     <div class="categorias">
@@ -65,13 +66,16 @@
       </ul>
     </div>
   </div>
+  </div>
   <!-- Hacer Pregunta -->
+  <!-- Hacer Pregunta -->
+  <div class="boton_preguntar">
+    <button type="button" class="btn btn-azul  " data-toggle="modal" data-target="#myModal">Preguntar</button>
+  </div>
   <!-- Tab panes -->
-  <br>
-  <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModal">Preguntar</button>
   <div class="modal fade fondo-ng" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content color-modales">
+    <div class="modal-dialog row col-12">
+      <div class="modal-content  color-modales">
         <!-- Modal Header -->
         <div class="modal-header">
           <h3 class="modal-title txt-blanco">Agregar Pregunta</h3>
@@ -81,29 +85,26 @@
         <div class="modal-body">
           <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
             <div class="form-group">
-              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" > Hola ??¡¡ </textarea>
+              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" ></textarea>
             </div>
           </form>
         </div>
-          <!-- Modal footer -->
-          <div class="modal-footer d-flex justify-content-around mt-2">
+        <!-- Modal footer -->
+        <div class="modal-footer mt-2 d-flex justify-content-around mt-2">
             <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm"> 
-              <div class="form-group ">
-                <label for="ciudad"></label>
-                <select  formControlName="seccion" class="form-control custom-select color-modales txt-blanco">
-                  <option value="guiones">Cortos y Guiones</option>
-                  <option value="animacion">Animacion 2D y 3D</option>
-                  <option value="audio">Audio y Video</option>
-                  <option value="virtual">Aplicacion y Entornos Virtuales</option>
-                  <option value="programacion">Programacion</option>
-                </select>
-              </div>
-
-              <div>
-                <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Publicar</span></button>
-              </div>
+              <label class ="txt-blanco"for="seccion">Eliga una seccion:</label>
+              <select  name="seccion" formControlName="seccion" class="custom-select color-modales txt-blanco">
+                <option value="guiones">Cortos y Guiones</option>
+                <option value="animacion">Animacion 2D y 3D</option>
+                <option value="audio">Audio y Video</option>
+                <option value="virtual">Aplicacion y Entornos Virtuales</option>
+                <option value="programacion">Programacion</option>
+              </select>
             </form>
-          </div>      
+            <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
+              <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Publicar</span></button>
+            </form>
+        </div>      
 
       </div>
     </div>
@@ -112,20 +113,20 @@
   <div class="tab-content">
     <div id="Cortos-guiones" class="container tab-pane active">
       <br>
-      <div *ngFor= "let item of preguntasGuiones$ | async"  class="contenedor-pregunta mb-5" data-toggle="tab" href="#home">
+      <div *ngFor= "let item of preguntasGuiones$ | async; let i = index"  class="contenedor-pregunta mb-5 row col-12" data-toggle="tab" href="#home">
         <div  class="container">
-          <div class="row">
-            <div class="col-10 ">
+          <div class="row col-12">
+            <div class="col-10 d-flex justify-content-start">
               <div class="margin_pregunta">
                 <p class="pregunta" >{{item.pregunta}}</p>
               </div>
             </div>
             <div class="col-2 ">
-              <div class="Botones_pregunta1">
+              <div class="Botones_pregunta1 d-flex justify-content-start">
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
-                  <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#Editar1">Editar</button>
-                  <div class="modal fade fondo-ng" id="Editar1">
+                  <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
                     <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
@@ -135,17 +136,22 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <form>
-                            <div class="form-group">
-                              <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" >{{item.pregunta}} </textarea>
+                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm"> 
+                            <div class="form-group form-control">
+                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
                             </div>
-                          </form>
+                          </form>-->
+                          <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
                         <!-- Modal footer -->
-                        <div class="modal-footer">
+                        <div class="modal-footer d-flex justify-content-around">
                           <div class="Agregar_Boton d-flex justify-content-around">
-                            <button type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Editar</span></button>
+                            <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " data-dismiss="modal"><span class="txt-btn">Editar</span></button>
                             <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
+                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
+                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
+                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
+                           </form>-->
                           </div>
                         </div>
                       </div>
@@ -156,46 +162,48 @@
                   <button (click)="adminElim_Pregunta(item.id)" type="button" class="btn btn-primary">Eliminar</button>
                 </div>
                 <div *ngIf="!validar && item.usuario != nom_usua" >
-                  <button type="button" class="btn btn-primary">Reportar</button>
+                  <button (click)="reportarUsuario(item.usuario)" type="button" class="btn btn-primary">Reportar</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="footer_pregunta">
-          <div>{{item.usuario}}</div>
-          <div><button class="btn btn-primary" data-toggle="collapse"  [attr.data-target]="'#demo'+ item.id">Respuestas</button></div>
-          <div><input type=»text» readonly=»readonly» /></div>
+        <div class="footer_pregunta container">
+          <div class="row col-12"> 
+            <div class="col-4 d-flex justify-content-start" >{{item.usuario}}</div>
+            <div class="col-4 d-flex justify-content-center"><button (click)="abrirRespuestas(item.id)"class="btn btn-primary" data-toggle="collapse"  [attr.data-target]="'#demo'+ item.id">Respuestas</button></div>
+            <div class="col-4 d-flex justify-content-end">{{item.Fecha}}</div>
+         </div>
         </div>
         
-        <div id="demo{{item.id}}" class="collapse">
+        <div  id="demo{{item.id}}" class="collapse row col-12">
           <div class="scroll">
-            <div class="respuestas">
-              <div class="container">
+            <div  class="respuestas col-12">
+              <div  *ngFor="let data of respuestas$ | async" class="container">
                 <div class="row">
                   <div class="col-10 ">
                     <div class="card">
                       <div class="texto_respuesta">
-                        <p>1. Este software de guion, Final Draft, fue creado por Ben Cahan y Marc Madnick en 1991 para aspirantes a guionistas que se hacían un lío con el formato, sobre todo cuando Hollywood se puso muy estricto con este tema. Y han llegado a conseguir que ahora muchos concursos de guion y productoras, especialmente en Estados Unidos, no admitan guiones que no hayan sido escritos con este software.</p>
+                        <p>{{data.respuesta}}</p>
                       </div>
                     </div>
                   </div>
                   <div class="col-2 ">
                     <div class="botones_pregunta">
-                      <div *ngIf="!validar && !own_a">
+                      <div *ngIf="!validar && data.usuario != nom_usua" class="mb-2">
                         <!-- No es admin-->
-                        <button type="button" class="btn btn-primary">Reportar</button>
+                        <button (click)="reportarUsuario(data.usuario)" type="button" class="btn btn-primary mb-2">Reportar</button>
                       </div>
-                      <div *ngIf="validar && !own_a">
+                      <div *ngIf="validar && data.usuario != nom_usua " class="mb-2" >
                         <!-- es admin pero no es pregunta propia-->
-                        <button type="button" class="btn btn-primary">Eliminar</button>
+                        <button (click)="adminElim_Respuesta(data.id)" type="button" class="btn btn-primary mb-2">Eliminar</button>
                       </div>
                       <!-- Boton Editar respuesta -->
-                      <div *ngIf="own_a">
+                      <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
-                        <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#Editar11">Editar</button>
-                        <div class="modal fade fondo-ng" id="Editar11">
+                        <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
                           <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
@@ -205,16 +213,20 @@
                               </div>
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <form>
+                                <!--<form>
                                   <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" > </textarea>
+                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                                   </div>
-                                </form>
+                                </form>-->
+                                <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
                               <!-- Modal footer -->
                               <div class="modal-footer">
                                 <div class="Agregar_Boton">
-                                  <button type="button" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                  <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                </div>
+                                <div class="Agregar_Boton">
+                                  <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                                 </div>
                               </div>
                             </div>
@@ -239,19 +251,23 @@
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-group">
-                          <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" > </textarea>
+                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
+                        <div class="form-control form-group">
+                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}" 
+                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
                         </div>
-                      </form>
+                      </form>-->
+                      <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
+                      
                     </div>          
                     <!-- Modal footer -->
-                    <div class="modal-footer">
-                      <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-group">
-                          <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Agregar</span></button>
+                    <div class="modal-footer d-flex justify-content-center">
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
+                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
+                        <div class="form-control form-group">
+                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
                         </div>
-                      </form>
+                      </form>-->
                     </div>
                   </div>
                 </div>
@@ -591,13 +607,16 @@
 
   </div>
 
-  <div *ngIf="validar" class="row d-flex justify-content-start mb-5 mt-2">
-    <a class= "btn btn-verde col-2 mx-5 btn-redo" [routerLink]="['/usuarios']">
-      <p>Ver Usuarios</p>
-    </a>
+  <div *ngIf="validar" class="container mb-5 btn-usuarios">
+    <div  class="row d-flex justify-content-start mb-5 mt-2">
+      <a class= "btn btn-verde col-2 mx-5 btn-redo" [routerLink]="['/usuarios']">
+        <p>Ver Usuarios</p>
+      </a>
+    </div>
   </div>
-
-</main>
+  
+  
+</div>
 
 <div *ngIf="block && !cargando" class="container mx-auto d-flex justify-content-center mt-5">
   <div class="row">
