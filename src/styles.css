@@ -32,3 +32,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     grid-template-columns: 1fr;
   }
 }
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-width: 50%;
+  font-weight: 200;
+  height: 300px;
+  border: 2px dashed #f16624;
+  border-radius: 5px;
+  background: white;
+  margin: 10px 0;
+
+
+}
+
+progress::-webkit-progress-value {
+  transition: width 0.1s ease;
+}
+
+img {
+  width: 250px
+}

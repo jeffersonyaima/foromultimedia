@@ -9,10 +9,15 @@ import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { FileUpload } from '../../models/file-upload.model';
+
+
+import { DropzoneDirective } from '../../dropzone.directive';
+import { UploaderComponent } from '../../uploader/uploader.component'
+import { UploadTaskComponent } from '../../upload-task/upload-task.component'
+
 
 @NgModule({
-  declarations: [GuionesComponent],
+  declarations: [GuionesComponent, DropzoneDirective, UploaderComponent, UploadTaskComponent],
   exports:[GuionesComponent],
   imports: [
     CommonModule,

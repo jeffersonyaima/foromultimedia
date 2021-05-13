@@ -21,11 +21,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import {AngularFireDatabaseModule } from '@angular/fire/database';
 
-/*cloud storage*/
-
-import { UploadFormComponent } from './components/upload-form/upload-form.component';
-import { UploadListComponent } from './components/upload-list/upload-list.component';
-import { UploadDetailsComponent } from './components/upload-details/upload-details.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAKuO8ExX3hnuV9EgxmikNbinnflHAgaQw",
@@ -40,7 +35,7 @@ export const firebaseConfig = {
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DropzoneDirective } from './dropzone.directive';
+
 
 
 
@@ -48,7 +43,7 @@ import { DropzoneDirective } from './dropzone.directive';
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent,MenuComponent,UploadFormComponent,UploadListComponent,UploadDetailsComponent, DropzoneDirective],
+  declarations: [AppComponent, NavbarComponent,MenuComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
