@@ -1,5 +1,12 @@
+<div *ngIf="cargando" class="container mx-auto d-flex justify-content-center mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>CARGANDO..... </h1>
+    </div>
+  </div>
+</div>
 
-<section id="pantalla">
+<section *ngIf="!cargando" id="pantalla">
 
   <div class="izquierdo">
     <div class="icono mt-5">
@@ -149,10 +156,7 @@
   <div class="derecha">
     <div class="contenido_derecha">
       <h1>Programación</h1>
-      <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
-        <br>
-        Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
-      </p>
+      <p class="parrafo"> {{descripcion_Seccion}} </p>
       <br>
       <h3>Proyectos</h3>
       <br>

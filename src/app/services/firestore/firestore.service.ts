@@ -40,6 +40,19 @@ export interface UpdatePregunta{
   pregunta:string
 }
 
+export interface descripcionSeccion{
+  Descripción:string
+}
+
+export interface archivos{
+  downloadURL:string;
+  path:string;
+  seccion:string;
+  Titulo:string;
+  tipo:string;
+  id:string
+}
+
 
 @Injectable()
 
@@ -57,6 +70,11 @@ export class FirestoreService {
 
   array_respuestas:Observable<Lista_Respuestas[]>=null as any;
 
+  array_archivosGuiones:Observable<archivos[]>=null as any;
+
+  
+
+
 
 
   private coleccionUsuarios!: AngularFirestoreCollection<Lista_Usuarios>;
@@ -69,6 +87,7 @@ export class FirestoreService {
     this.coleccionRespuestas = firestore.collection<Lista_Respuestas>('respuestas');
     this.getUsuario();
     this.getPreguntas();
+    this.getarchivos();
 
   }
 
@@ -193,6 +212,13 @@ async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
     )
     console.log(this.array_respuestas);
     return this.array_respuestas;
+
+  }
+
+  getarchivos(){
+    this.array_archivosGuiones=this.firestore.collection('files', ref=>ref.where("seccion",'==','Guiones')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as archivos))
+    )
 
   }
 

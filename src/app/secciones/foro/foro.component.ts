@@ -22,9 +22,15 @@ declare var jQuery: any;
 export class ForoComponent implements OnInit {
 
   preguntasGuiones$=this.firestoreService.array_preguntasGuiones;
+  preguntasAnimacion$ = this.firestoreService.array_preguntasAnim;
+  preguntasAudio$ = this.firestoreService.array_preguntasAudio;
+  preguntasVirtuales$ = this.firestoreService.array_preguntasVirtual;
+  preguntasProgramacion$ = this.firestoreService.array_preguntasProgramacion;
   respuestas$=this.firestoreService.array_respuestas;
+
   nom_usua:string = "";
   myDate = new Date();
+
   respuesta:string = ''; /*Esto reemplaza formulario de respuestas, para usar ngModel en cambio*/ 
   preguntaEditar:string='Test para editar pregunta';
   respuestaEditar:string='Test para editar respuesta';

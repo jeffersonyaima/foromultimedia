@@ -1,23 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FirestoreService } from 'src/app/services/firestore/firestore.service';
+import { descripcionSeccion, FirestoreService } from 'src/app/services/firestore/firestore.service';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
-
-
+import {UploadTaskComponent} from '../../upload-task/upload-task.component'
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { finalize, tap } from 'rxjs/operators';
 
 
 @Component({
   selector: 'app-guiones',
   templateUrl: './guiones.component.html',
   styleUrls: ['./guiones.component.css'],
-  providers: [FirestoreService],
+  providers: [FirestoreService, UploadTaskComponent],
 })
 export class GuionesComponent implements OnInit {
 
   validar:boolean=false;
+  descripcion_Seccion:Observable<descripcionSeccion>=null as any;
+  filesGuiones=this.firestoreService.array_archivosGuiones;
+  cargando:boolean=true;
+  tituloProyecto:string='Titulo Proyecto';
+  actualizarTitulo:string='Digite titulo Nuevo';
 
-  constructor( private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore) {
+
+  constructor(private Upload:UploadTaskComponent, private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore,
+    private storage: AngularFireStorage) {
     this.authSvc.afAuth.user.forEach((dato)=>{  /* en Datos se guarda informacion del usuario loogeado */
       console.log(dato); /*Dato es array que guarda informacion*/
       if(dato) {
@@ -39,12 +47,117 @@ export class GuionesComponent implements OnInit {
       else console.log('NO ESTA LOGEADO');
     })
 
+    
+    this.firestore.collection('secciones').doc('guiones').get().subscribe((resultado)=>{
+      let info:any = resultado.data();
+      console.log(info); 
+      this.descripcion_Seccion=info.Descripción;
+      this.cargando=false;
+    })
+
+  
+}
+
+actualizarDescripcion(){
+  console.log(this.descripcion_Seccion);
+  this.firestore.collection('secciones').doc('guiones').update({
+    "Descripción":this.descripcion_Seccion
+ })
+ 
+}
+
+goToLink(url: string){
+  window.open(url, "_blank");
+}
+
+agregarejemplo(){
+ /* console.log(this.idActual);
+  this.firestore.collection('files').doc(this.idActual).update({
+    "Titulo":this.tituloProyecto
+});*/
+}
+
+subirarchivo(){
+  this.Upload.startUpload();
+}
+
+eliminarEjemplo(id:string){
+  this.firestore.collection('files').doc(id).delete();
+  console.log("Eliminado: "+id);
+}
+
+editarEjemplo(id:string){
+  console.log(id);
+
+  if(this.actualizarTitulo==='Digite titulo Nuevo'){
+    console.log('Titulo no cambio');
   }
-
-
-
-  ngOnInit(): void {
-
+  else{
+    this.firestore.collection('files').doc(id).update({
+      "Titulo":this.actualizarTitulo
+    })
+  
   }
+}
+
+/*----------------------STORAGE ----------------------------*/
+
+task: AngularFireUploadTask;
+percentage: Observable<number>;
+snapshot: Observable<any>;
+downloadURL: string;
+
+startUpload(file:File) {
+  console.log(file);
+  // The storage path
+  const path = `test/${Date.now()}_${file.name}`;
+   // Reference to storage bucket
+  const ref = this.storage.ref(path);
+
+  // The main task
+  this.task = this.storage.upload(path, file);
+
+  // Progress monitoring
+  this.percentage = this.task.percentageChanges();
+
+  this.snapshot   = this.task.snapshotChanges().pipe(
+    tap(console.log),
+    // The file's download URL
+    finalize( async() =>  {
+       this.downloadURL = await ref.getDownloadURL().toPromise();
+      const sec = 'Guiones'
+      const id = this.firestore.createId();
+      const type = file.type;
+      this.firestore.collection('files').doc(id).set({downloadURL: this.downloadURL, path, seccion: sec, id:id, 
+      Titulo:this.tituloProyecto, tipo:type})
+      console.log("Archivo Subido");
+      
+
+    }),
+  )
+}
+
+isActive(snapshot:any) {
+  return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+}
+
+
+isHovering: boolean;
+files: File[] = [];
+
+toggleHover(event: boolean) {
+  this.isHovering = event;
+}
+
+onDrop(files: FileList) {
+  for (let i = 0; i < files.length; i++) {
+     this.files.push(files.item(i));
+ }
+}
+
+
+ngOnInit(): void {
+
+}
 
 }

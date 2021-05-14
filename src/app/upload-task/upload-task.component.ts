@@ -19,10 +19,11 @@ export class UploadTaskComponent implements OnInit {
   snapshot: Observable<any>;
   downloadURL: string;
 
+  id_paraDevolver:string="String id";
+
   constructor(private storage: AngularFireStorage, private db: AngularFirestore) { }
 
   ngOnInit() {
-    this.startUpload();
   }
 
   startUpload() {
@@ -39,19 +40,30 @@ export class UploadTaskComponent implements OnInit {
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
 
-    this.snapshot   = this.task.snapshotChanges().pipe(
+    this.snapshot=this.task.snapshotChanges().pipe(
       tap(console.log),
       // The file's download URL
       finalize( async() =>  {
         this.downloadURL = await ref.getDownloadURL().toPromise();
         const sec = 'Guiones'
-        this.db.collection('files').add( { downloadURL: this.downloadURL, path, seccion: sec});
+        const id = this.db.createId();
+        this.actualizarId(id);
+        this.db.collection('files').add( { downloadURL: this.downloadURL, path, seccion: sec, id:id});
       }),
     );
   }
 
   isActive(snapshot:any) {
     return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+  }
+
+  retornarId(){
+    return this.id_paraDevolver;
+  }
+
+  actualizarId(idMandado:string){
+    this.id_paraDevolver=idMandado;
+    console.log(this.id_paraDevolver);
   }
 
 }

@@ -79,6 +79,16 @@
   width: 75%;
 }
 
+.item{
+  Display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
+
+
+
 .item p{
   text-align: center;
 }
@@ -114,6 +124,11 @@
   border-radius: 20px;
   color:#fff;
 }
+.infoArchivos{
+  background-color: rgba(0,0,0,0.5);
+  color:#fff;
+  width: 80%;
+}
 .Buscar{
   display:flex;
   justify-content: space-between;
@@ -134,6 +149,16 @@
 .modal-content{
  background-color: #5679a6;
 }
+
+.txt-negro{
+  color:black;
+}
+
+video{
+  width:80%;
+
+}
+
 /*--------------------------------------------------Editar-----------------------------------------------*/
 
 
@@ -158,6 +183,7 @@
 
 .modal-content{
   border-radius: 5%;
+  
 }
 
 
