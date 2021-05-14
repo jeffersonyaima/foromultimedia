@@ -38,6 +38,7 @@
 #pantalla{
   display:flex;
   justify-content: space-between;
+  font-family: 'Poppins', sans-serif
 }
 
 .cuadricula{
@@ -72,11 +73,9 @@
 }*/
 
 .ImgRedonda{
-  border: black 1px solid;
-  border-radius: 50%;
   margin-left: 40%;
-  height: 75%;
-  width: 75%;
+  height: 65%;
+  width: 65%;
 }
 
 .item p{
@@ -159,4 +158,205 @@
 
 .modal-content{
   border-radius: 5%;
+}
+
+/*--------------------------------------------------Responsive----------------------------------------------*/
+/* Extra small devices (phones, 600px and down)*/
+@media only screen and (max-width: 600px) {
+  .ImgRedonda{
+    margin-left: 30%;
+    height: 50%;
+    width: 50%;
+  }
+  
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 1);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: auto;
+   
+   }
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 767px) {
+  .ImgRedonda{
+    margin-left: 30%;
+    height: 50%;
+    width: 50%;
+  }
+  
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 1);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: auto;
+   
+   }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .ImgRedonda{
+    margin-left: 30%;
+    height: 50%;
+    width: 50%;
+  }
+  
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 2);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 70%;
+    height: auto;
+   
+   }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px )and (max-width: 1199px){
+  .ImgRedonda{
+    margin-left: 35%;
+    height: 60%;
+    width: 60%;
+  }
+  
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 3);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 25%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: auto;
+   
+   }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px)and (max-width: 1439px) {
+  .ImgRedonda{
+    margin-left: 40%;
+    height: 60%;
+    width: 60%;
+  }
+  
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 3);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 45%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: auto;
+   
+   }
+  
+}
+
+/* Extra Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1440px) {
+  
 }

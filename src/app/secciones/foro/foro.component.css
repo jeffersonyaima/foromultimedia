@@ -39,6 +39,7 @@ main {
   text-align :center;
   margin-bottom: 2%;
   padding-top: 2%;
+  font-family: 'Poppins', sans-serif
 }
 .boton_preguntar{
   display: flex;

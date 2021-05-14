@@ -42,10 +42,7 @@ export class AnimacionComponent implements OnInit {
 
   ngOnInit(): void {
     (function ($) {
-      $(window).on("load",function(){
-        $("#pantalla").css("opacity", 1)
-        $("#precarga").delay(2500).fadeOut("slow");
-      });
+      
     })(jQuery);
   }
 
