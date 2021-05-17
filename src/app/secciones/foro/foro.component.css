@@ -20,14 +20,14 @@
 }
 body {
   background: #f8fafb ;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins bold', sans-serif;
 
 }
 main {
   max-width: 1000px;
   width: 90%;
   margin:40px auto;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins bold', sans-serif;
 }
 .todo{
   background-color: #fff;
@@ -39,7 +39,7 @@ main {
   text-align :center;
   margin-bottom: 2%;
   padding-top: 2%;
-  font-family: 'Poppins', sans-serif
+  font-family: 'Poppins bold', sans-serif
 }
 .boton_preguntar{
   display: flex;
