@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
   imgsrcaudio : any;
   imgsrcprogramacion : any;
   imgsrcrealidad : any;
+  imgsrclampara : any;
+
 
   constructor(private authSvc: AuthService, private firestore:AngularFirestore) {
     
@@ -63,6 +65,7 @@ export class HomeComponent implements OnInit {
     this.imgsrcaudio='../../assets/audio.png',
     this.imgsrcprogramacion='../../assets/promagramacion.png',
     this.imgsrcrealidad='../../assets/realidad.png';
+    this.imgsrclampara='../../assets/lampara.png';
 
     (function ($) {
       $(window).on("load",function(){

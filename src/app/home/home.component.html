@@ -15,7 +15,12 @@
         </a>  
       </div>
       <div class="col-sm-4 "> 
-        <img id="lampara" src="../../assets/lampara.png"  class="mx-auto d-block">
+        <a href="foro">
+          <img id="lampara" 
+          [src]="imgsrclampara"
+          (mouseover)="imgsrclampara ='../../assets/lampara.gif'" 
+          (mouseout)="imgsrclampara = '../../assets/lampara.png'" alt="Paris" class="mx-auto d-block">
+        </a>
       </div>
       <div class="col-sm-4">
         <a href="animacion">
