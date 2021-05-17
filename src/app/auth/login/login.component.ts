@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     try{
      const user = await this.authSvc.Login(email, password);
      if(user){
-       this.router.navigate(['/home']);
+      window.open('/home', "_self");
      }
     }
 

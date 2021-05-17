@@ -36,7 +36,8 @@ export class RegisterComponent implements OnInit {
       password:['', [Validators.required, Validators.minLength(6)]],
       admin:[false],
       block:[false],
-      N_report:[0]
+      N_report:[0],
+      reload:[0]
     });
   }
 

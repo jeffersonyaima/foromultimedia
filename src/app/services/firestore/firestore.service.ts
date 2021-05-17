@@ -98,6 +98,7 @@ export class FirestoreService {
       try{
         /*const idn= this.firestore.createId();
         const data = {idn, ...registerForm};*/
+        registerForm.email=registerForm.email.toLocaleLowerCase();
         const data = registerForm;
         const result = this.coleccionUsuarios.doc(registerForm.email).set(data);
         resolve(result);

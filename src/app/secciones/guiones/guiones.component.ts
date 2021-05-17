@@ -17,10 +17,11 @@ import { finalize, tap } from 'rxjs/operators';
 export class GuionesComponent implements OnInit {
 
   validar:boolean=false;
+  cambioTitulo:boolean=false;
   descripcion_Seccion:Observable<descripcionSeccion>=null as any;
   filesGuiones=this.firestoreService.array_archivosGuiones;
   cargando:boolean=true;
-  tituloProyecto:string='Titulo Proyecto';
+  tituloProyecto:string='1. Agregar Titulo Proyecto aqui';
   actualizarTitulo:string='Digite titulo Nuevo';
 
 
@@ -36,6 +37,7 @@ export class GuionesComponent implements OnInit {
       this.firestore.collection('userlist', ref=>ref.where("email",'==',correo)).get().subscribe((resultado)=>{
         resultado.docs.forEach((item)=>{
           let usuario :any = item.data();
+          console.log(usuario);
           let ad:any = usuario.admin;
           console.log(ad);
           this.validar=ad;
@@ -63,6 +65,7 @@ actualizarDescripcion(){
   this.firestore.collection('secciones').doc('guiones').update({
     "Descripción":this.descripcion_Seccion
  })
+
  
 }
 
@@ -91,11 +94,14 @@ editarEjemplo(id:string){
 
   if(this.actualizarTitulo==='Digite titulo Nuevo'){
     console.log('Titulo no cambio');
+    this.cambioTitulo=true;
   }
   else{
     this.firestore.collection('files').doc(id).update({
       "Titulo":this.actualizarTitulo
     })
+    this.actualizarTitulo='Digite titulo Nuevo';
+    this.cambioTitulo=false;
   
   }
 }
@@ -128,9 +134,10 @@ startUpload(file:File) {
       const sec = 'Guiones'
       const id = this.firestore.createId();
       const type = file.type;
-      this.firestore.collection('files').doc(id).set({downloadURL: this.downloadURL, path, seccion: sec, id:id, 
+      await this.firestore.collection('files').doc(id).set({downloadURL: this.downloadURL, path, seccion: sec, id:id, 
       Titulo:this.tituloProyecto, tipo:type})
-      console.log("Archivo Subido");
+      window.open('/guiones', "_self");
+     
       
 
     }),
