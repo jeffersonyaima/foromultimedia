@@ -48,6 +48,62 @@ footer{
   background-size: 100%;
   position: relative;
 } 
+.centrado1{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  opacity: .5;
+}
+.centrado2{
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  opacity: .5;
+}
+.centrado3{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  opacity: .5;
+}
+.centrado4{
+  position: absolute;
+  top: 95%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins bold', sans-serif;
+  
+}
+.centrado5{
+  position: absolute;
+  top: 83%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  
+}
+.centrado6{
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins', sans-serif;
+  
+}
+.centrado7{
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Poppins bold', sans-serif;
+  
+}
 .elementos{
   overflow: hidden;
   display: flex;
