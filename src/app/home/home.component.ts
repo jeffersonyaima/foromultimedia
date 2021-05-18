@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
         $(".container").css("opacity", 1)
         $("#precarga").delay(2500).fadeOut("slow");
       });
+      $('[data-toggle="tooltip"]').tooltip()
     })(jQuery);
 
   }
