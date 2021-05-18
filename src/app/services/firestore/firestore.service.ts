@@ -92,6 +92,7 @@ export class FirestoreService {
     this.getUsuario();
     this.getPreguntas();
     this.getarchivos();
+    this.getUsuarioBuscado('Juanavilan');
 
   }
 

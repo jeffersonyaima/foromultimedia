@@ -17,6 +17,10 @@ export class UsuariosComponent implements OnInit {
   el cual ya esta cargado de informacion de los datos que encuentre en la base de datos*/
   usuarioBuscado$=this.firestoreService.infoUsuarioBuscado;
   sebuscoUsuario:boolean=false;
+  buscarUsuario:string='';
+
+  n_reportesUB:number=0;
+  nombre_usuarioUB:string='';
 
   public user$: Observable<any> = this.authSvc.afAuth.user;
 
@@ -44,11 +48,24 @@ export class UsuariosComponent implements OnInit {
     this.initForm();
   }
 
-  buscarUsuarioenLista(){
-    console.log(this.buscarUsuarioForm.value);
+  async buscarUsuarioenLista(){
+    try {
+      console.log(this.buscarUsuario);
     this.sebuscoUsuario=true;
-    const nombreUsuario = this.buscarUsuarioForm.get('nombreusuario')?.value;
-    this.firestoreService.getUsuarioBuscado(nombreUsuario);
+    /*this.firestoreService.getUsuarioBuscado(this.buscarUsuario);*/
+    this.firestore.collection('userlist', ref=>ref.where("nombreusuario",'==',this.buscarUsuario)).get().subscribe((resultado)=>{
+      resultado.docs.forEach((item)=>{
+        let usuario :any = item.data();
+        this.n_reportesUB=usuario.N_report;
+        this.nombre_usuarioUB=usuario.nombreusuario;
+
+      })
+    })
+    }
+    catch(error){
+      console.log(error);
+
+    }
 
   }
 
