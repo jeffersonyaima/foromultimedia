@@ -6,13 +6,19 @@ import { ProgramacionRoutingModule } from './programacion-routing.module';
 import { ProgramacionComponent } from './programacion.component';
 
 
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { DirectivesModule} from '../../directives/directives.module';
+
 
 @NgModule({
   declarations: [ProgramacionComponent],
   exports:[ProgramacionComponent],
   imports: [
     CommonModule,
-    ProgramacionRoutingModule
+    ProgramacionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DirectivesModule
   ]
 
 })

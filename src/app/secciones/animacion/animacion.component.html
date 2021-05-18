@@ -1,180 +1,220 @@
-
-
-  <section  id="pantalla">
-
+<div *ngIf="cargando" class="container mx-auto d-flex justify-content-center mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h1>CARGANDO..... </h1>
+      </div>
+    </div>
+  </div>
+  
+  
+  <section *ngIf="!cargando" id="pantalla" >
     <div class="izquierdo">
-      <div class="icono  mt-5">
+      <div class="icono mt-5">
         <img  src="../../../assets/2D.png" alt="" class="ImgRedonda">
       </div>
       <div class="botones">
         <ul >
-          <li *ngIf="validar"><button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal">Editar</button></li>
-
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal">Editar seccion</button></li>
           <div class="modal fade" id="myModal">
             <div class="modal-dialog">
               <div class="modal-content">
-
+  
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Editar Ejemplo</h4>
+                  <h4 class="modal-title">Editar Seccion</h4>
                   <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
-
+  
                 <!-- Modal body -->
-
                 <div class="modal-body">
-                  <div class="modal_imagen">
-                    <img  class="imagen_cortos" src="../../../assets/2D.png" alt="">
-                  </div>
                   <br>
-                  <h5 class="modal-title">Buscar ID:</h5>
-                  <br>
-                  <div class=Buscar>
-                    <div class="Texto_Buscar">
-                      <input type="text" class="form-control" placeholder=" id">
-                    </div>
-                    <div class="Boton_Buscar">
-                      <button type="button" class="btn-primary">Buscar</button>
-                    </div>
-                  </div>
-                  <br>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+                    <textarea class="form-control " id="exampleFormControlTextarea1" rows="3"  [(ngModel)]="descripcion_Seccion" ></textarea>
                 </div>
-
-
+  
+  
                 <!-- Modal footer -->
                 <div class="modal-footer">
-                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
+                  <button  (click)="actualizarDescripcion()" type="button" id="boton_agregar"class="btn-primary" data-dismiss="modal">Guardar cambios</button>
                 </div>
-
+  
               </div>
             </div>
           </div>
-
-          <li *ngIf="validar"><button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal2">Agregar</button></li>
-
+  
+          <li *ngIf="validar"><button  type="button" class="btn btn-primary  mt-3 btn-redo" data-toggle="modal" data-target="#myModal2">Agregar ejemplo</button></li>
+  
           <div class="modal fade" id="myModal2">
             <div class="modal-dialog">
               <div class="modal-content">
-
+  
                 <!-- Modal Header -->
                 <div class="modal-header">
-                  <h4 class="modal-title">Agregar Ejemplo</h4>
+                  <h4 class="titulos modal-title">Agregar Ejemplo</h4>
                   <button type="button" class="close" data-dismiss="modal">×</button>
                 </div>
-
+  
                 <!-- Modal body -->
-                <div class="modal-body">
+                <div class="modal-body">    
+                  <textarea class="infoArchivos" id="exampleFormControlTextarea1" rows="2"  [(ngModel)]="tituloProyecto"></textarea>
+                  <p class="mt-2 mb-2 titulos">2. Seleccionar y soltar archivo: </p>
                   <div >
-                    <input type="file" id="files" name="files[]" multiple />
-                    <output id="list"></output>
-
-                    <script>
-                      function handleFileSelect(evt) {
-                        var files = evt.target.files; // FileList object
-
-                        // files is a FileList of File objects. List some properties.
-                        var output = [];
-                        for (var i = 0, f; f = files[i]; i++) {
-                          output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
-                                      f.size, ' bytes, last modified: ',
-                                      f.lastModifiedDate.toLocaleDateString(), '</li>');
-                        }
-                        document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-                      }
-
-                      document.getElementById('files').addEventListener('change', handleFileSelect, false);
-                    </script>
+                    <div class="dropzone"
+                        dropzone
+                        (hovered)="toggleHover($event)"
+                        (dropped)="onDrop($event)"
+                        [class.hovering]="isHovering">
+                        <h3>AngularFire Drop Zone</h3>
+                        <p>Drag and Drop a File</p>
+                    </div>
+  
+                    <h3>Uploads</h3>
+  
+                    <div *ngFor="let file of files">
+                      <!--<upload-task [file]="file"></upload-task>-->
+                      <p class="mt-2 mb-2 titulos">3. Hacer click en y esperar que la pagina se recarge: </p>
+                      <button  (click)="startUpload(file)" type="button"  id="boton_agregar"class="btn-primary" >Subir Archivo</button>
+                    
+                      <div *ngIf="percentage | async as pct">
+                        <progress [value]="pct" max="100"></progress>
+                        {{ pct | number }}%
+                      </div>
+                      
+                      
+                      <div *ngIf="snapshot | async as snap">
+                      
+                        {{ snap.bytesTransferred }} of {{ snap.totalBytes }}
+                      
+                        <!--<div *ngIf="downloadURL as url">
+                          <h3>Results!</h3>
+                          <video [src]="url" controls="controls" auntoplay="autoplay" width="600" height="400"></video><br>
+                          <a [href]="url" target="_blank" rel="noopener">Download Me!</a>
+                        </div>-->
+                      
+                        <button class="ml-2" (click)="task.pause()" [disabled]="!isActive(snap)">Pause</button>
+                        <button class="ml-2" (click)="task.cancel()" [disabled]="!isActive(snap)">Cancel</button>
+                        <button class="ml-2" (click)="task.resume()" [disabled]="!(snap?.state === 'paused')">Resume</button>
+                      </div>
+                    
+                    </div>
                   </div>
                   <br>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a editar"></textarea>
+        
                 </div>
-
-
-                <!-- Modal footer -->
+                
+                
+              
+  
+                <!-- Modal footer 
                 <div class="modal-footer">
-                  <button type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
-                </div>
-
+                  <button  (click)="agregarejemplo()" type="button"  id="boton_agregar"class="btn-primary" data-dismiss="modal">Agregar</button>
+                </div>-->
+  
               </div>
             </div>
           </div>
-
-          <li *ngIf="validar"> <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal" data-target="#myModal3">Editar ejemplo</button></li>
-
-          <div class="modal fade" id="myModal3">
-            <div class="modal-dialog">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Editar Ejemplo</h4>
-                  <button type="button" class="close" data-dismiss="modal">×</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <h5 class="modal-title">Buscar ID:</h5>
-                  <br>
-                  <div class=Buscar>
-                    <div class="Texto_Buscar">
-                      <input type="text" class="form-control" placeholder=" id">
-                    </div>
-                    <div class="Boton_Buscar">
-                      <button type="button" class="btn-primary">Buscar</button>
-                    </div>
-                  </div>
-
-                  <br>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"  placeholder=" Muestra el proyecto a eliminar"></textarea>
-
-
-                </div>
-
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                  <div class="Eliminar_Boton">
-                    <button type="button" class="btn-primary" id="eliminar" data-dismiss="modal">Editar</button>
-                    <button type="button" class="btn-primary" id="editar" data-dismiss="modal">Eliminar</button>
-                  </div>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
+  
         </ul>
       </div>
     </div>
-
+  
     <div class="derecha">
       <div class="contenido_derecha">
-        <h1>Animacion 2D y 3D</h1>
-        <p class="parrafo">Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores.
-          <br>
-          Lorem ipsum or sit amet consectetur adipisicing elit. Numquam aliquid dignissimos impedit tempore quia, amet voluptas voluptatibus. Cum excepturi similique velit est voluptatem veritatis consequuntur quis officia rerum! Temporibus, asperiores
-        </p>
+        <h1 class="titulos">Animacion 2D y 3D</h1>
+        <p class="parrafo"> {{descripcion_Seccion}}   </p>
         <br>
-        <h3>Proyectos</h3>
+        <h2 class="titulos">Proyectos</h2>
         <br>
         <div class="scroll">
-          <div class="cuadricula">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-            <div class="item">4</div>
-            <div class="item">5</div>
-            <div class="item">6</div>
-            <div class="item">7</div>
-            <div class="item">8</div>
-            <div class="item">9</div>
+          <div  class="cuadricula">
+            <div *ngFor="let file of filesAnimacion | async; let i = index" class="item">
+              <a (click)="goToLink(file.downloadURL)">{{file.Titulo}}</a>
+              <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal"  [attr.data-target]="'#demo1'+ i">Previsualizar</button>
+  
+              <div class="modal fade fondo-ng" id="demo1{{i}}">
+                <div class="modal-dialog">
+                  <div class="modal-content color-modales">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h3 class="modal-title" class="txt-negro titulos">{{file.Titulo}}</h3>
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <h6 *ngIf="validar" class="mt-2 mb-2  txt-negro" style="font-weight: bold;">Escribir titulo nuevo y luego hacer click en Editar</h6>
+                      <textarea *ngIf="validar" class="infoArchivos mb-2" id="exampleFormControlTextarea1" rows="1"  [(ngModel)]="actualizarTitulo"></textarea>
+                      <div class="txt-negro " *ngIf="file.tipo === 'image/jpeg' || file.tipo === 'image/png'">
+                        <div class="container"> 
+                          <div class="row d-flex justify-content-center">
+                            <img [src]="file.downloadURL" alt="imagen del proyecto" >
+                          </div>
+                          <div class="row mt-4 d-flex justify-content-center">
+                            <button (click)="goToLink(file.downloadURL)" type="button" class="btn btn-primary btn-sm " >Ver Imagen en tamaño original</button>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="txt-negro  d-flex justify-content-center " *ngIf="file.tipo === 'text/plain'" >
+                        <div class="container">
+                          <div class="row  d-flex justify-content-center">
+                            <p class="titulos"> Sin previsualizacion disponible</p>
+                          </div>
+                          <div class="row  d-flex justify-content-center">
+                            <button (click)="goToLink(file.downloadURL)" type="button" class="btn btn-primary btn-sm " >Ver TXT</button>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="txt-negro  d-flex justify-content-center" *ngIf="file.tipo === 'application/pdf'" >
+                        <div class="container">
+                          <div class="row  d-flex justify-content-center">
+                            <p class="titulos"> Sin previsualizacion disponible</p>
+                          </div>
+                          <div class="row  d-flex justify-content-center">
+                            <button (click)="goToLink(file.downloadURL)" type="button" class="btn btn-primary btn-sm " >Ver PDF</button>
+                          </div>
+                        </div>
+                       
+                      </div>
+  
+                      <div class="txt-negro d-flex justify-content-center" *ngIf="file.tipo === 'video/mp4'" >
+                        <div class="container">
+                          <div class="row d-flex justify-content-center">
+                            <video [src]="file.downloadURL" controls="controls" ></video>
+                          </div>
+                          <div class="row mt-4 d-flex justify-content-center">
+                            <button (click)="goToLink(file.downloadURL)" type="button" class="btn btn-primary btn-sm " >Ver video en tamaño original</button>
+                          </div>
+                        </div>
+                        
+                        
+                      </div>
+  
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer d-flex justify-content-center">
+                     <button *ngIf="validar" (click)="eliminarEjemplo(file.id)" type="button" class="btn btn-primary btn-sm"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
+                     <button *ngIf="validar" (click)="editarEjemplo(file.id)" type="button" class="btn btn-primary btn-sm"  data-dismiss="modal"> <span class="txt-btn">Editar</span></button>
+  
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+  
+  
+            </div>
           </div>
         </div>
+  
       </div>
-
+  
     </div>
-
+  
   </section>
+  
+  <div class="fondonegro"></div>
+  
+  
+  
 
 

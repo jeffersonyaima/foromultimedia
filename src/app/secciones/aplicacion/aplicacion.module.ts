@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 
 import { AplicacionRoutingModule } from './aplicacion-routing.module';
 import { AplicacionComponent } from './aplicacion.component';
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { DirectivesModule} from '../../directives/directives.module';
 
 
 
@@ -12,7 +14,10 @@ import { AplicacionComponent } from './aplicacion.component';
   exports:[AplicacionComponent],
   imports: [
     CommonModule,
-    AplicacionRoutingModule
+    AplicacionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DirectivesModule
   ]
 
 })

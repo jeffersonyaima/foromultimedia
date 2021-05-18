@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth/services/auth.service';
 import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
+import { Observable } from 'rxjs/internal/Observable';
 declare var jQuery: any;
 
 @Component({
@@ -9,6 +10,8 @@ declare var jQuery: any;
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  entradaforo:boolean=false;
 
   imgsrc3d : any;
   imgsrc2d : any;
@@ -23,7 +26,7 @@ export class HomeComponent implements OnInit {
     
     this.authSvc.afAuth.user.forEach((dato)=>{
       if(dato){
-        
+        this.entradaforo=true;
       console.log(dato.email); /*dato.email guarda valor "email" guardado en array dato*/
       let correo = dato.email; /* Se guarda en correo valor de dato.email*/
 

@@ -71,6 +71,10 @@ export class FirestoreService {
   array_respuestas:Observable<Lista_Respuestas[]>=null as any;
 
   array_archivosGuiones:Observable<archivos[]>=null as any;
+  array_archivosAnimacion:Observable<archivos[]>=null as any;
+  array_archivosAudio:Observable<archivos[]>=null as any;
+  array_archivosAplicacion:Observable<archivos[]>=null as any;
+  array_archivosProgramacion:Observable<archivos[]>=null as any;
 
   
 
@@ -218,6 +222,22 @@ async guardarrespuesta(respuestaForm: Lista_Respuestas): Promise<void>{
 
   getarchivos(){
     this.array_archivosGuiones=this.firestore.collection('files', ref=>ref.where("seccion",'==','Guiones')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as archivos))
+    )
+
+    this.array_archivosAnimacion=this.firestore.collection('files', ref=>ref.where("seccion",'==','Animacion')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as archivos))
+    )
+
+    this.array_archivosAudio=this.firestore.collection('files', ref=>ref.where("seccion",'==','Audio')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as archivos))
+    )
+
+    this.array_archivosAplicacion=this.firestore.collection('files', ref=>ref.where("seccion",'==','Aplicacion')).snapshotChanges().pipe(
+      map(actions=> actions.map(a => a.payload.doc.data() as archivos))
+    )
+
+    this.array_archivosProgramacion=this.firestore.collection('files', ref=>ref.where("seccion",'==','Programacion')).snapshotChanges().pipe(
       map(actions=> actions.map(a => a.payload.doc.data() as archivos))
     )
 

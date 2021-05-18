@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { descripcionSeccion, FirestoreService } from 'src/app/services/firestore/firestore.service';
-import { AngularFirestore, AngularFirestoreCollection, fromDocRef} from '@angular/fire/firestore';
+import { AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
-import {UploadTaskComponent} from '../../upload-task/upload-task.component'
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { finalize, tap } from 'rxjs/operators';
 
@@ -12,7 +11,7 @@ import { finalize, tap } from 'rxjs/operators';
   selector: 'app-guiones',
   templateUrl: './guiones.component.html',
   styleUrls: ['./guiones.component.css'],
-  providers: [FirestoreService, UploadTaskComponent],
+  providers: [FirestoreService],
 })
 export class GuionesComponent implements OnInit {
 
@@ -25,7 +24,7 @@ export class GuionesComponent implements OnInit {
   actualizarTitulo:string='Digite titulo Nuevo';
 
 
-  constructor(private Upload:UploadTaskComponent, private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore,
+  constructor(private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore,
     private storage: AngularFireStorage) {
     this.authSvc.afAuth.user.forEach((dato)=>{  /* en Datos se guarda informacion del usuario loogeado */
       console.log(dato); /*Dato es array que guarda informacion*/
@@ -56,9 +55,7 @@ export class GuionesComponent implements OnInit {
       this.descripcion_Seccion=info.Descripción;
       this.cargando=false;
     })
-
-  
-}
+  }
 
 actualizarDescripcion(){
   console.log(this.descripcion_Seccion);
@@ -78,10 +75,6 @@ agregarejemplo(){
   this.firestore.collection('files').doc(this.idActual).update({
     "Titulo":this.tituloProyecto
 });*/
-}
-
-subirarchivo(){
-  this.Upload.startUpload();
 }
 
 eliminarEjemplo(id:string){

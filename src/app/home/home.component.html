@@ -15,12 +15,16 @@
         </a> 
       </div>
       <div class="col-sm-4 "> 
-        <a href="foro" data-toggle="tooltip" data-placement="top" title="Foro Multimedia">
+        <a *ngIf="entradaforo" href="foro" data-toggle="tooltip" data-placement="top" title="Foro Multimedia">
           <img id="lampara" 
           [src]="imgsrclampara"
           (mouseover)="imgsrclampara ='../../assets/lampara.gif'" 
           (mouseout)="imgsrclampara = '../../assets/lampara.png'" alt="Paris" class="mx-auto d-block">
         </a>
+        <img *ngIf="!entradaforo" id="lampara" 
+        [src]="imgsrclampara"
+        (mouseover)="imgsrclampara ='../../assets/lampara.gif'" 
+        (mouseout)="imgsrclampara = '../../assets/lampara.png'" alt="Paris" class="mx-auto d-block">
       </div>
       <div class="col-sm-4">
         <a href="animacion" data-toggle="tooltip" data-placement="top" title="Animacion 3D">

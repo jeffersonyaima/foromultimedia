@@ -15,6 +15,7 @@ const routes:Routes=[
   { path: 'foro', loadChildren: () => import('./secciones/foro/foro.module').then(m => m.ForoModule) },
   { path: 'audiovideo', loadChildren: () => import('./secciones/audiovideo/audiovideo.module').then(m => m.AudiovideoModule) },
   { path: 'usuarios', loadChildren: () => import('./secciones/foro/usuarios/usuarios.module').then(m => m.UsuariosModule) },
+  { path: 'directives', loadChildren: () => import('./directives/directives.module').then(m => m.DirectivesModule) },
 
 ];
 

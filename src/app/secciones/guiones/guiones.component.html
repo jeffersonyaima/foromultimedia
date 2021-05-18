@@ -139,8 +139,8 @@
                   </div>
                   <!-- Modal body -->
                   <div class="modal-body">
-                    <h6 class="mt-2 mb-2  txt-negro" style="font-weight: bold;">Escribir titulo nuevo y luego hacer click en Editar</h6>
-                    <textarea class="infoArchivos mb-2" id="exampleFormControlTextarea1" rows="1"  [(ngModel)]="actualizarTitulo"></textarea>
+                    <h6 *ngIf="validar" class="mt-2 mb-2  txt-negro" style="font-weight: bold;">Escribir titulo nuevo y luego hacer click en Editar</h6>
+                    <textarea *ngIf="validar" class="infoArchivos mb-2" id="exampleFormControlTextarea1" rows="1"  [(ngModel)]="actualizarTitulo"></textarea>
                     <div class="txt-negro " *ngIf="file.tipo === 'image/jpeg' || file.tipo === 'image/png'">
                       <div class="container"> 
                         <div class="row d-flex justify-content-center">

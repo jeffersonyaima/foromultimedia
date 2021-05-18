@@ -8,10 +8,8 @@
 }
 
 .izquierda{
-
   display:flex;
   justify-content: center;
-
   height: 100vh;
   width: 50%;
   margin-left: 500px;
@@ -33,6 +31,11 @@
 .parrafo{
   text-align: justify;
   margin: 2%;
+  font-weight: normal;
+}
+
+.titulos{
+  font-weight: bolder;
 }
 
 #pantalla{
@@ -42,11 +45,11 @@
 }
 
 .cuadricula{
-
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: start;
+ 
 }
 .proyectos{
   text-align: center;
@@ -64,6 +67,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  margin-left: 0.5%;
 }
 /*.icono{
   border-left: 10px;
@@ -73,16 +77,22 @@
 }*/
 
 .ImgRedonda{
- 
   margin-left: 40%;
   height: 65%;
   width: 65%;
 }
 
+.item{
+  Display: flex;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+}
 .item p{
   text-align: center;
+  font-family: 'Poppins', sans-serif
 }
-
 .scroll {
   display: block;
   border: 0px solid red;
@@ -92,6 +102,17 @@
   height: 400px;
   overflow-y: scroll;
 }
+
+.descripcion_Seccion{
+  font-weight: normal;
+}
+
+h1 h3 {
+  color: red;
+  font-weight: bolder;
+}
+
+
 
 /*-----------------------------------------------Estilos Modales------------------------------------------*/
 
@@ -116,6 +137,11 @@
   border-radius: 20px;
   color:#fff;
 }
+.infoArchivos{
+  background-color: rgba(0,0,0,0.5);
+  color:#fff;
+  width: 80%;
+}
 .Buscar{
   display:flex;
   justify-content: space-between;
@@ -136,6 +162,16 @@
 .modal-content{
  background-color: #5679a6;
 }
+
+.txt-negro{
+  color:black;
+}
+
+video{
+  width:80%;
+
+}
+
 /*--------------------------------------------------Editar-----------------------------------------------*/
 
 
@@ -160,7 +196,9 @@
 
 .modal-content{
   border-radius: 5%;
+  
 }
+
 
 /*--------------------------------------------------Responsive----------------------------------------------*/
 /* Extra small devices (phones, 600px and down)*/
@@ -283,7 +321,7 @@
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px )and (max-width: 1199px){
   .ImgRedonda{
-    margin-left: 35%;
+    margin-left: 30%;
     height: 60%;
     width: 60%;
   }
@@ -362,3 +400,4 @@
 @media only screen and (min-width: 1440px) {
   
 }
+

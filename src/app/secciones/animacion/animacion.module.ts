@@ -5,6 +5,11 @@ import { CommonModule } from '@angular/common';
 import { AnimacionRoutingModule } from './animacion-routing.module';
 import { AnimacionComponent } from './animacion.component';
 
+import { ReactiveFormsModule, FormsModule} from '@angular/forms';
+
+
+import { DirectivesModule} from '../../directives/directives.module';
+
 
 
 @NgModule({
@@ -12,7 +17,10 @@ import { AnimacionComponent } from './animacion.component';
   exports:[AnimacionComponent],
   imports: [
     CommonModule,
-    AnimacionRoutingModule
+    AnimacionRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    DirectivesModule
   ]
 
 })
