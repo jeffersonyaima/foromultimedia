@@ -101,7 +101,7 @@ width: 100%;
   padding: 5px;
   margin-top: 5px;
   width: 100%;
-  height: 400px;
+  height: 300px;
   overflow-y: scroll;
 }
 
@@ -389,15 +389,6 @@ video{
     font-family: 'Poppins bold', sans-serif
   }
 
-  .scroll {
-    display: block;
-    padding: 5px;
-    margin-top: 5px;
-    width: 100%;
-    height: 600px;
-    overflow-y: scroll;
-  }
-
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -445,16 +436,6 @@ video{
     font-family: 'Poppins bold', sans-serif
   }
 
-  
-  .scroll {
-    display: block;
-    padding: 5px;
-    margin-top: 5px;
-    width: 100%;
-    height: 600px;
-    overflow-y: scroll;
-  }
-  
 }
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and up) */

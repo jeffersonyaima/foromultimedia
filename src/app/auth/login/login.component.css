@@ -18,3 +18,8 @@ margin-bottom: 15%;
     background-color:white;
     font-family: 'Poppins', sans-serif
   }
+
+  model-viewer{
+    width: 700px;
+    height: 550px;
+  }

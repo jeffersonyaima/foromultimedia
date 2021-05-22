@@ -34,8 +34,14 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js",
-            "src/assets/javascripts/categorias.js","src/assets/javascripts/abrir.js"]
+            "scripts": [
+            "node_modules/jquery/dist/jquery.min.js",
+            "node_modules/@popperjs/core/dist/umd/popper.min.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js",
+            "src/assets/javascripts/abrir.js",
+            "src/assets/javascripts/categorias.js",
+            "src/assets/javascripts/close.js"
+          ]
           },
           "configurations": {
             "production": {
@@ -96,16 +102,16 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
             ],
             "scripts": [
-              "node_modules/jquery/js/dist/jquery.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/@popperjs/core/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/jquery/dist/jquery.min.js",
-              "src/assets/javascripts/categorias.js"
+              "src/assets/javascripts/categorias.js",
+              "src/assets/javascripts/close.js"
             ]
           }
         },
