@@ -79,7 +79,7 @@ width: 100%;
 }*/
 
 .ImgRedonda{
-  margin-left: 40%;
+  margin-left: 50%;
   height: 65%;
   width: 65%;
 }
@@ -227,7 +227,7 @@ video{
   .botones ul li{
     padding:2%;
     display: flex;
-    margin-left: 5%;
+    margin-left: 0%;
     justify-content: center;
     align-items: center;
   }
@@ -274,7 +274,7 @@ video{
   .botones ul li{
     padding:2%;
     display: flex;
-    margin-left: 5%;
+    margin-left: 0%;
     justify-content: center;
     align-items: center;
   }
@@ -321,7 +321,7 @@ video{
   .botones ul li{
     padding:2%;
     display: flex;
-    margin-left: 5%;
+    margin-left: 0%;
     justify-content: center;
     align-items: center;
   }
@@ -336,7 +336,7 @@ video{
 
    #pantalla{
     height: 100vh;
-  width: 100%;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     font-family: 'Poppins bold', sans-serif
@@ -347,7 +347,7 @@ video{
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px )and (max-width: 1199px){
   .ImgRedonda{
-    margin-left: 30%;
+    margin-left: 36%;
     height: 60%;
     width: 60%;
   }
@@ -394,7 +394,7 @@ video{
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px)and (max-width: 1439px) {
   .ImgRedonda{
-    margin-left: 40%;
+    margin-left: 45%;
     height: 60%;
     width: 60%;
   }
