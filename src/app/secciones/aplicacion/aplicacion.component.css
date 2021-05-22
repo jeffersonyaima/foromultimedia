@@ -440,6 +440,47 @@ video{
 
 /* Extra Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1440px) {
+  .ImgRedonda{
+    margin-left: 45%;
+    height: 60%;
+    width: 60%;
+  }
   
+  .item{
+    border-radius: 5%;
+    margin-top: 1%;
+    background: white;
+    color: gray;
+    flex:none;
+    width: calc((100% - 3% )/ 3);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .botones ul li{
+    padding:2%;
+    display: flex;
+    margin-left: 45%;
+    justify-content: center;
+    align-items: center;
+  }
+  .derecha{
+    background:#98D3D4 ;
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: auto;
+   
+   }
+
+   #pantalla{
+    height: 100vh;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+    font-family: 'Poppins bold', sans-serif
+  }
 }
 
