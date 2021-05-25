@@ -7,7 +7,6 @@
 </div>
 
 <div *ngIf ="!block && !cargando"  class="pagprin">
-
   <div class="todo">
   <h1 class="Titulo">Multi-Foro</h1>
   <div class="encabezado_foro">
@@ -74,28 +73,19 @@
     <button type="button" class="btn btn-azul  " data-toggle="modal" data-target="#myModal">Preguntar</button>
   </div>
   <!-- Tab panes -->
-  <div class="modal fade fondo-ng" id="myModal"  data-backdrop="static">
-    <div class="modal-dialog row col-12 modal-dialog-centered">
+  <div class="modal fade fondo-ng" id="myModal">
+    <div class="modal-dialog row col-12">
       <div class="modal-content  color-modales">
         <!-- Modal Header -->
         <div class="modal-header">
           <h3 class="modal-title txt-blanco">Agregar Pregunta</h3>
-          <button type="button" class="close" data-dismiss="modal" (click)="restartPregunta()">×</button>
+          <button type="button" class="close" data-dismiss="modal">×</button>
         </div>
         <!-- Modal body -->
         <div class="modal-body">
           <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
             <div class="form-group">
-              <textarea  class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu Pregunta!" cols="65" ></textarea>
-            </div>
-            <script>
-              function borrarArea(x) {
-              x.element.value = '';
-              console.log('ADFSDF');
-            }
-            </script>
-            <div class="row d-flex justify-content-center">
-              <p class="txt-negro">{{preguntaHecha}}</p>
+              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" ></textarea>
             </div>
           </form>
         </div>
@@ -103,8 +93,8 @@
         <div class="modal-footer mt-2 d-flex justify-content-around mt-2">
             <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
               <label class ="txt-blanco"for="seccion">Eliga una seccion:</label>
-              <select  name="seccion" formControlName="seccion" class="form-group custom-select color-modales txt-blanco">
-                <option value="guiones" selected>Cortos y Guiones</option>
+              <select  name="seccion" formControlName="seccion" class="custom-select color-modales txt-blanco">
+                <option value="guiones">Cortos y Guiones</option>
                 <option value="animacion">Animacion 2D y 3D</option>
                 <option value="audio">Audio y Video</option>
                 <option value="virtual">Aplicacion y Entornos Virtuales</option>
@@ -115,6 +105,7 @@
               <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Publicar</span></button>
             </form>
         </div>
+
       </div>
     </div>
   </div>
@@ -135,8 +126,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static" >
-                    <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
+                    <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -214,8 +205,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
-                          <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
+                          <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -253,8 +244,8 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
+                <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
@@ -311,8 +302,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
+                    <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -390,8 +381,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
-                          <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
+                          <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -429,8 +420,8 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
+                <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
@@ -489,8 +480,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
+                    <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -568,8 +559,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
-                          <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
+                          <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -607,8 +598,8 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
+                <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
@@ -667,8 +658,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
+                    <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -746,8 +737,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
-                          <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
+                          <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -785,8 +776,8 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
+                <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
@@ -844,8 +835,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
-                    <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
+                    <div class="modal-dialog">
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -923,8 +914,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static"> 
-                          <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
+                          <div class="modal-dialog">
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -962,8 +953,8 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
-                <div class="modal-dialog modal-dialog-centered">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
+                <div class="modal-dialog">
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">

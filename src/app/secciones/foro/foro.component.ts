@@ -5,6 +5,8 @@ import { AngularFirestore} from '@angular/fire/firestore';
 import {AuthService} from '../../auth/services/auth.service';
 import { Router } from '@angular/router';
 
+
+
 declare var jQuery: any;
 
 
@@ -30,18 +32,18 @@ export class ForoComponent implements OnInit {
   myDate = new Date();
 
   respuesta:string = ''; /*Esto reemplaza formulario de respuestas, para usar ngModel en cambio*/ 
-  preguntaEditar:string='Editar pregunta';
-  respuestaEditar:string='Editar respuesta';
+  preguntaEditar:string='Test para editar pregunta';
+  respuestaEditar:string='Test para editar respuesta';
+
   
  
+
   validar:boolean=false; /*Validar si es admin */
   own_q:boolean=false;
   own_a:boolean=false;
   block:boolean=false; /* Validar si esta bloqueado */
 
   cargando:boolean=true;
-
-  preguntaHecha:string='';
 
 
   public preguntaForm= new FormGroup({
@@ -120,10 +122,8 @@ export class ForoComponent implements OnInit {
 
 
   async agregarPregunta(){
-    if(this.preguntaForm.valid){
     console.log("El foro esta conectado con la base de datos");
     console.log('registro',this.preguntaForm.value);
-    this.preguntaHecha='PREGUNTA HECHA, HACER CLICK EN LA X';
 
     const id= this.firestore.createId();
     const formValue = this.preguntaForm.value; /* Obtengo valor del formulario */
@@ -135,13 +135,7 @@ export class ForoComponent implements OnInit {
     const Fecha= this.myDate.toDateString()
     const formValueReady = {Fecha,...formValueID}
     await this.firestoreService.guardarpregunta(formValueReady);
-    
-    
-    }
-    else{
-      this.preguntaHecha='Haga una pregunta porfavor';
-    }
-    
+    this.router.navigate(['/foro']);
 
   }
 
@@ -151,10 +145,6 @@ export class ForoComponent implements OnInit {
     this.preguntaForm.setValue({pregunta:this.preguntaEditar,seccion:seccion_enviado})
     const formValue = this.preguntaForm.value; 
     this.firestoreService.editarPregunta(id,formValue);  
-  }
-
-  restartPregunta(){
-    this.preguntaHecha='';
   }
 
   /* ----------------------------------RESPUESTAS----------------------------------------------- */

@@ -155,11 +155,6 @@ color:white;
   background-color: rgba(0,0,0,0.1);
 }
 
-.txt-negro{
-  color:black;
-  font-weight: bolder;
-}
-
 
 /*-----------------------------------------Modal Nueva pregunta-----------------------------------------*/
 .form-control{
@@ -247,10 +242,6 @@ color:white;
     margin-right: 10px;
     margin-bottom: 0;
   }
-
-  .modal-dialog{
-    margin-left: 15%;
-   }
 }
 @media screen and (max-width:500px){
   .categorias{
@@ -306,6 +297,7 @@ color:white;
   margin-left: 4.5%;
 }
 .modal-dialog{
+ margin-top: 17%;
  margin-left: 35%;
 }
 

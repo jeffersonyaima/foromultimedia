@@ -7,7 +7,6 @@ import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage
 import { finalize, tap } from 'rxjs/operators';
 
 
-
 @Component({
   selector: 'app-guiones',
   templateUrl: './guiones.component.html',
@@ -23,7 +22,6 @@ export class GuionesComponent implements OnInit {
   cargando:boolean=true;
   tituloProyecto:string='1. Agregar Titulo Proyecto aqui';
   actualizarTitulo:string='Digite titulo Nuevo';
-  logo:string='../../../assets/Logotipo.png';
 
 
   constructor(private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore,

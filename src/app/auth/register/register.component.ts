@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
    const user = this.authSvc.register(email, password);
 
     if(user){
-      window.open('/home', "_self"); 
+      this.router.navigate(['/home']);
     }
 
    }
