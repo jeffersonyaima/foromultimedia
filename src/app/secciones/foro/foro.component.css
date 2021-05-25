@@ -149,10 +149,16 @@ color:white;
 
 .txt-btn{
   color:#06A8F3;
+  font-weight: bolder;
 }
 
 .fondo-transp{
   background-color: rgba(0,0,0,0.1);
+}
+
+.txt-negro{
+  color:black;
+  font-weight: bolder;
 }
 
 
@@ -161,6 +167,15 @@ color:white;
   background-color: #37A1F4;
   border-radius: 20px;
   color:#fff;
+}
+
+.padd-btn2{
+  padding: 5%;
+  display: block;
+}
+.padd-btn{
+  padding: 1%;
+  display: block;
 }
 /*-----------------------------------------contenedor de preguntas-----------------------------------------*/
 
@@ -242,6 +257,11 @@ color:white;
     margin-right: 10px;
     margin-bottom: 0;
   }
+  
+  .modal-content{
+    border-radius: 10px;
+    margin: 0 auto;
+  }
 }
 @media screen and (max-width:500px){
   .categorias{
@@ -297,8 +317,8 @@ color:white;
   margin-left: 4.5%;
 }
 .modal-dialog{
- margin-top: 17%;
- margin-left: 35%;
+ margin-top: 15%;
+ margin-left: 30%;
 }
 
 .Botones_pregunta1{
@@ -349,10 +369,7 @@ color:white;
   align-items: center;
   justify-content: center;
 }
-.dos_botones{
-  display: flex;
-  justify-content: space-between;
-}
+
 
 #eliminar{
   margin-left: 120%;

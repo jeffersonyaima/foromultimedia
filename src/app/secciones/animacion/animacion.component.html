@@ -126,9 +126,10 @@
         <br>
         <div class="scroll">
           <div  class="cuadricula">
-            <div *ngFor="let file of filesAnimacion | async; let i = index" class="item">
-              <a (click)="goToLink(file.downloadURL)">{{file.Titulo}}</a>
-              <button type="button" class="btn btn-primary btn-sm mt-2" data-toggle="modal"  [attr.data-target]="'#demo1'+ i">Previsualizar</button>
+            <div *ngFor="let file of filesAnimacion | async; let i = index" class="item" [ngStyle]="{'background-image':(file.tipo === 'image/jpeg' || file.tipo === 'image/png')?
+            'url('+file.downloadURL+')':'url('+this.logo+')',  'background-attachment': 'local' , 'background-size': 'cover'}">
+              <!--<a (click)="goToLink(file.downloadURL)">{{file.Titulo}}</a>-->
+              <button type="button" class="boton-ejemplo" data-toggle="modal"  [attr.data-target]="'#demo1'+ i"></button>
   
               <div class="modal fade fondo-ng" id="demo1{{i}}">
                 <div class="modal-dialog">

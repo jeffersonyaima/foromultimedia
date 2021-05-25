@@ -73,21 +73,24 @@
     <button type="button" class="btn btn-azul  " data-toggle="modal" data-target="#myModal">Preguntar</button>
   </div>
   <!-- Tab panes -->
-  <div class="modal fade fondo-ng" id="myModal">
-    <div class="modal-dialog row col-12">
+  <div class="modal fade fondo-ng" id="myModal" data-backdrop="static">
+    <div class="modal-dialog row col-12" modal-dialog-centered>
       <div class="modal-content  color-modales">
         <!-- Modal Header -->
         <div class="modal-header">
           <h3 class="modal-title txt-blanco">Agregar Pregunta</h3>
-          <button type="button" class="close" data-dismiss="modal">×</button>
+          <button type="button" class="close" data-dismiss="modal" (click)="restartPregunta()">×</button>
         </div>
         <!-- Modal body -->
         <div class="modal-body">
           <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
             <div class="form-group">
-              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu comentario!" cols="65" ></textarea>
+              <textarea class="fondo-ng txt-blanco" name="comentarios" formControlName="pregunta" required placeholder=" Haz tu Pregunta" cols="65" ></textarea>
             </div>
           </form>
+          <div class="row d-flex justify-content-center">
+            <p class="txt-negro">{{preguntaHecha}}</p>
+          </div>
         </div>
         <!-- Modal footer -->
         <div class="modal-footer mt-2 d-flex justify-content-around mt-2">
@@ -102,7 +105,7 @@
               </select>
             </form>
             <form (ngSubmit)="agregarPregunta()" [formGroup]="preguntaForm">
-              <button type="submit" class="btn fondo-blanco" ><span class="txt-btn">Publicar</span></button>
+              <button type="submit" class="btn fondo-blanco  btn-lg padd-btn2" ><span class="txt-btn">Publicar</span></button>
             </form>
         </div>
 
@@ -126,9 +129,10 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
-                    <div class="modal-dialog">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
+                    <div class="modal-dialog" modal-dialog-centered>
                       <div class="modal-content color-modales">
+
                         <!-- Modal Header -->
                         <div class="modal-header">
                           <h3 class="modal-title txt-blanco">Editar pregunta</h3>
@@ -136,26 +140,14 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <div class="form-group form-control">
-                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
-                            </div>
-                          </form>-->
                           <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer d-flex justify-content-around">
-                          <div class="Agregar_Boton d-flex justify-content-around">
-                            <div class="dos_botones">
-                              <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " id="eliminar" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                              <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco"  id="editar" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
-                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                           </form>-->
-                            </div>
-                          </div>
+                          <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                          <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>                 
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -205,8 +197,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
-                          <div class="modal-dialog">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
+                          <div class="modal-dialog" modal-dialog-centered>
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -215,22 +207,12 @@
                               </div>
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <!--<form>
-                                  <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
-                                  </div>
-                                </form>-->
                                 <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
                               <!-- Modal footer -->
-                              <div class="dos_botoness">
-
-                                  <div>
-                                    <button (click)="editarRespuestaPropia(data.id)"type="button" id="eliminar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                                  </div>
-
-                                  <div><button (click)=" eliminarResp_Propia(data.id)"type="button" id="editar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button></div>
-
+                              <div class="modal-footer d-flex justify-content-around">                                  
+                                <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                               </div>
                             </div>
                           </div>
@@ -244,33 +226,22 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
-                <div class="modal-dialog">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
+                <div class="modal-dialog" modal-dialog-centered> 
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
-                    <div class="modal-body">
-                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}"
-                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
-                        </div>
-                      </form>-->
+                    <div class="modal-body">                      
                       <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
 
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer d-flex justify-content-center">
-                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
-                        </div>
-                      </form>-->
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2 padd-btn btn-lg" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>                      
                     </div>
                   </div>
                 </div>
@@ -302,8 +273,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
-                    <div class="modal-dialog">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
+                    <div class="modal-dialog" modal-dialog-centered>
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -312,26 +283,14 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <div class="form-group form-control">
-                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
-                            </div>
-                          </form>-->
                           <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer d-flex justify-content-around">
-                          <div class="Agregar_Boton d-flex justify-content-around">
-                            <div class="dos_botones">
-                              <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " id="eliminar" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                              <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco"  id="editar" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
-                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                           </form>-->
-                            </div>
-                          </div>
+                          <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                          <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>                 
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -381,8 +340,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
-                          <div class="modal-dialog">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
+                          <div class="modal-dialog" modal-dialog-centered>
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -390,24 +349,15 @@
                                 <button type="button" class="close" data-dismiss="modal">×</button>
                               </div>
                               <!-- Modal body -->
-                              <div class="modal-body">
-                                <!--<form>
-                                  <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
-                                  </div>
-                                </form>-->
+                              <div class="modal-body">                              
                                 <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
                               <!-- Modal footer -->
-                              <div class="dos_botoness">
-
-                                  <div>
-                                    <button (click)="editarRespuestaPropia(data.id)"type="button" id="eliminar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                                  </div>
-
-                                  <div><button (click)=" eliminarResp_Propia(data.id)"type="button" id="editar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button></div>
-
+                              <div class="modal-footer d-flex justify-content-around">                                  
+                                <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                               </div>
+
                             </div>
                           </div>
                         </div>
@@ -420,34 +370,24 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
-                <div class="modal-dialog">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
+                <div class="modal-dialog" modal-dialog-centered>
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
-                    <div class="modal-body">
-                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}"
-                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
-                        </div>
-                      </form>-->
+                    <div class="modal-body">                      
                       <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
 
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer d-flex justify-content-center">
-                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
-                        </div>
-                      </form>-->
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2 padd-btn btn-lg" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>                      
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -480,8 +420,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
-                    <div class="modal-dialog">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
+                    <div class="modal-dialog" modal-dialog-centered>
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -490,26 +430,14 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <div class="form-group form-control">
-                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
-                            </div>
-                          </form>-->
                           <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer d-flex justify-content-around">
-                          <div class="Agregar_Boton d-flex justify-content-around">
-                            <div class="dos_botones">
-                              <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " id="eliminar" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                              <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco"  id="editar" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
-                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                           </form>-->
-                            </div>
-                          </div>
+                         <!-- Modal footer -->
+                         <div class="modal-footer d-flex justify-content-around">
+                          <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                          <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>                 
                         </div>
+
                       </div>
                     </div>
                   </div>
@@ -559,8 +487,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
-                          <div class="modal-dialog">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
+                          <div class="modal-dialog" modal-dialog-centered>
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -569,23 +497,14 @@
                               </div>
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <!--<form>
-                                  <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
-                                  </div>
-                                </form>-->
                                 <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
-                              <!-- Modal footer -->
-                              <div class="dos_botoness">
-
-                                  <div>
-                                    <button (click)="editarRespuestaPropia(data.id)"type="button" id="eliminar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                                  </div>
-
-                                  <div><button (click)=" eliminarResp_Propia(data.id)"type="button" id="editar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button></div>
-
+                               <!-- Modal footer -->
+                               <div class="modal-footer d-flex justify-content-around">                                  
+                                <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                               </div>
+                            
                             </div>
                           </div>
                         </div>
@@ -598,34 +517,24 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
-                <div class="modal-dialog">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
+                <div class="modal-dialog" modal-dialog-centered>
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}"
-                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
-                        </div>
-                      </form>-->
                       <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
 
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer d-flex justify-content-center">
-                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
-                        </div>
-                      </form>-->
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2 padd-btn btn-lg" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>                      
                     </div>
+
                   </div>
                 </div>
               </div>
@@ -658,8 +567,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
-                    <div class="modal-dialog">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
+                    <div class="modal-dialog" modal-dialog-centered>
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -668,25 +577,12 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <div class="form-group form-control">
-                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
-                            </div>
-                          </form>-->
                           <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
-                        <!-- Modal footer -->
-                        <div class="modal-footer d-flex justify-content-around">
-                          <div class="Agregar_Boton d-flex justify-content-around">
-                            <div class="dos_botones">
-                              <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " id="eliminar" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                              <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco"  id="editar" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
-                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                           </form>-->
-                            </div>
-                          </div>
+                         <!-- Modal footer -->
+                         <div class="modal-footer d-flex justify-content-around">
+                          <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                          <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>                 
                         </div>
                       </div>
                     </div>
@@ -737,8 +633,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
-                          <div class="modal-dialog">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
+                          <div class="modal-dialog" modal-dialog-centered>
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -747,23 +643,14 @@
                               </div>
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <!--<form>
-                                  <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
-                                  </div>
-                                </form>-->
                                 <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
                               <!-- Modal footer -->
-                              <div class="dos_botoness">
-
-                                  <div>
-                                    <button (click)="editarRespuestaPropia(data.id)"type="button" id="eliminar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                                  </div>
-
-                                  <div><button (click)=" eliminarResp_Propia(data.id)"type="button" id="editar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button></div>
-
+                              <div class="modal-footer d-flex justify-content-around">                                  
+                                <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                               </div>
+
                             </div>
                           </div>
                         </div>
@@ -776,33 +663,22 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
-                <div class="modal-dialog">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
+                <div class="modal-dialog" modal-dialog-centered>
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}"
-                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
-                        </div>
-                      </form>-->
                       <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
 
                     </div>
                     <!-- Modal footer -->
                     <div class="modal-footer d-flex justify-content-center">
-                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
-                        </div>
-                      </form>-->
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2 padd-btn btn-lg" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>                      
                     </div>
                   </div>
                 </div>
@@ -835,8 +711,8 @@
                 <div *ngIf="item.usuario === nom_usua">
                   <!-- Boton Editar Pregunta -->
                   <button  type="button" class="btn btn-primary  btn-redo" data-toggle="modal"  [attr.data-target]="'#editarQ'+ item.id">Editar</button>
-                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" >
-                    <div class="modal-dialog">
+                  <div class="modal fade fondo-ng" id="editarQ{{item.id}}" data-backdrop="static">
+                    <div class="modal-dialog" modal-dialog-centered>
                       <div class="modal-content color-modales">
                         <!-- Modal Header -->
                         <div class="modal-header">
@@ -845,25 +721,12 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                          <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <div class="form-group form-control">
-                              <textarea class=" fondo-ng txt-blanco"name="comentarios" required placeholder="Edita tu pregunta" formControlName="pregunta" cols="65" >{{item.pregunta}} </textarea>
-                            </div>
-                          </form>-->
                           <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer d-flex justify-content-around">
-                          <div class="Agregar_Boton d-flex justify-content-around">
-                            <div class="dos_botones">
-                              <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn fondo-blanco " id="eliminar" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                              <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco"  id="editar" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                            <!--<form  (ngSubmit)="editarPreguntaPropia(item.id)" [formGroup]="preguntaForm">
-                            <button type="submit" class="btn fondo-blanco"> <span class="txt-btn">Editar</span></button>
-                            <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn fondo-blanco" data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>
-                           </form>-->
-                            </div>
-                          </div>
+                          <button (click)="editarPreguntaPropia(item.id,item.seccion)" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                          <button (click)="eliminarPreg_Propia(item.id)" type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn"  data-dismiss="modal"> <span class="txt-btn">Eliminar</span></button>                 
                         </div>
                       </div>
                     </div>
@@ -914,8 +777,8 @@
                       <div *ngIf="data.usuario === nom_usua">
                         <!-- pregunta es propia-->
                         <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#editarR'+ data.id + item.id">Editar</button>
-                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}">
-                          <div class="modal-dialog">
+                        <div class="modal fade fondo-ng" id="editarR{{data.id}}{{item.id}}" data-backdrop="static">
+                          <div class="modal-dialog" modal-dialog-centered>
                             <div class="modal-content color-modales">
                               <!-- Modal Header -->
                               <div class="modal-header">
@@ -924,23 +787,14 @@
                               </div>
                               <!-- Modal body -->
                               <div class="modal-body">
-                                <!--<form>
-                                  <div class="form-group">
-                                    <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]=" preguntaEditar" > </textarea>
-                                  </div>
-                                </form>-->
                                 <textarea class="fondo-ng txt-blanco"name="comentarios" required placeholder=" Haz tu comentario!" cols="65" [(ngModel)]="respuestaEditar" > </textarea>
                               </div>
-                              <!-- Modal footer -->
-                              <div class="dos_botoness">
-
-                                  <div>
-                                    <button (click)="editarRespuestaPropia(data.id)"type="button" id="eliminar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
-                                  </div>
-
-                                  <div><button (click)=" eliminarResp_Propia(data.id)"type="button" id="editar1" class="btn fondo-blanco" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button></div>
-
+                               <!-- Modal footer -->
+                               <div class="modal-footer d-flex justify-content-around">                                  
+                                <button (click)="editarRespuestaPropia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Editar</span></button>
+                                <button (click)=" eliminarResp_Propia(data.id)"type="button" class="btn mt-2 btn-lg fondo-blanco padd-btn" data-dismiss="modal"><span class="txt-btn">Eliminar</span></button>
                               </div>
+
                             </div>
                           </div>
                         </div>
@@ -953,34 +807,24 @@
               <div class="agregar_respuesta">
                 <button  type="button" class="btn btn-primary mt-3 btn-redo" data-toggle="modal"  [attr.data-target]="'#demo1'+ item.id">Agregar Respuesta</button>
               </div>
-              <div class="modal fade fondo-ng" id="demo1{{item.id}}">
-                <div class="modal-dialog">
+              <div class="modal fade fondo-ng" id="demo1{{item.id}}" data-backdrop="static">
+                <div class="modal-dialog" modal-dialog-centered>
                   <div class="modal-content color-modales">
                     <!-- Modal Header -->
                     <div class="modal-header">
-                      <h3 class="modal-title txt-blanco">Agregar respuesta??</h3>
+                      <h3 class="modal-title txt-blanco">Agregar respuesta</h3>
                       <button type="button" class="close" data-dismiss="modal">×</button>
                     </div>
                     <!-- Modal body -->
                     <div class="modal-body">
-                      <!-- <form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <textarea [(ngModel)] = "str" class="fondo-ng txt-blanco" name="item.usuario{{i}}"
-                          formControlName="respuesta" required placeholder=" Haz tu respuesta!" cols="65" value="{{item.pregunta}}" > </textarea>
-                        </div>
-                      </form>-->
                       <textarea class="fondo-ng txt-blanco" name="item.usuario{{i}}" required placeholder="Haz tu respuesta!" cols="65" [(ngModel)]="respuesta" > </textarea>
 
                     </div>
-                    <!-- Modal footer -->
-                    <div class="modal-footer d-flex justify-content-center">
-                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>
-                      <!--<form (ngSubmit)="agregarRespuesta()" [formGroup]="respuestaForm">
-                        <div class="form-control form-group">
-                          <button type="submit" (click)="Prueba()" class="btn fondo-blanco mt-2" ><span class="txt-btn">Agregar</span></button>
-                        </div>
-                      </form>-->
+                     <!-- Modal footer -->
+                     <div class="modal-footer d-flex justify-content-center">
+                      <button (click)="agregarRespuesta(item.id)" class="btn fondo-blanco mt-2 padd-btn btn-lg" data-dismiss="modal"><span class="txt-btn">Agregar</span></button>                      
                     </div>
+
                   </div>
                 </div>
               </div>

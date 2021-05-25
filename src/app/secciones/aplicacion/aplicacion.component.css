@@ -50,7 +50,7 @@ width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
  
 }
 .proyectos{
@@ -84,13 +84,6 @@ width: 100%;
   width: 65%;
 }
 
-.item{
-  Display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-}
 .item p{
   text-align: center;
   font-family: 'Poppins', sans-serif
@@ -101,7 +94,7 @@ width: 100%;
   padding: 5px;
   margin-top: 5px;
   width: 100%;
-  height: 400px;
+  height: 300px;
   overflow-y: scroll;
 }
 
@@ -112,6 +105,21 @@ width: 100%;
 h1 h3 {
   color: red;
   font-weight: bolder;
+}
+
+.boton-ejemplo{
+  width:100%;
+  height: 100%;
+  margin-left:0;
+  margin-right:0;
+  padding-left:0;
+  padding-right:0;
+  display:block;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
 }
 
 
@@ -481,6 +489,16 @@ video{
     display:flex;
     justify-content: space-between;
     font-family: 'Poppins bold', sans-serif
+  }
+
+  .scroll {
+    display: block;
+    border: 0px solid red;
+    padding: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 400px;
+    overflow-y: scroll;
   }
 }
 

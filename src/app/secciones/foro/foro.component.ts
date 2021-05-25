@@ -32,9 +32,8 @@ export class ForoComponent implements OnInit {
   myDate = new Date();
 
   respuesta:string = ''; /*Esto reemplaza formulario de respuestas, para usar ngModel en cambio*/ 
-  preguntaEditar:string='Test para editar pregunta';
-  respuestaEditar:string='Test para editar respuesta';
-
+  preguntaEditar:string='Editar pregunta';
+  respuestaEditar:string='Editar respuesta';
   
  
 
@@ -44,6 +43,8 @@ export class ForoComponent implements OnInit {
   block:boolean=false; /* Validar si esta bloqueado */
 
   cargando:boolean=true;
+
+  preguntaHecha:string='';
 
 
   public preguntaForm= new FormGroup({
@@ -122,8 +123,10 @@ export class ForoComponent implements OnInit {
 
 
   async agregarPregunta(){
+    if(this.preguntaForm.valid){
     console.log("El foro esta conectado con la base de datos");
     console.log('registro',this.preguntaForm.value);
+    this.preguntaHecha='PREGUNTA HECHA, HACER CLICK EN LA X';
 
     const id= this.firestore.createId();
     const formValue = this.preguntaForm.value; /* Obtengo valor del formulario */
@@ -136,15 +139,24 @@ export class ForoComponent implements OnInit {
     const formValueReady = {Fecha,...formValueID}
     await this.firestoreService.guardarpregunta(formValueReady);
     this.router.navigate(['/foro']);
+    }
+    else{
+      this.preguntaHecha='Haga una pregunta porfavor';
+    }
+    
 
   }
 
-  
   async editarPreguntaPropia(id:string, seccion_enviado:string){
     /*Llenar formulario manualmente, desde html ya no se usa FormGroup pero Firestore si lo necesita*/
     this.preguntaForm.setValue({pregunta:this.preguntaEditar,seccion:seccion_enviado})
     const formValue = this.preguntaForm.value; 
     this.firestoreService.editarPregunta(id,formValue);  
+    this.preguntaEditar='Editar pregunta';
+  }
+
+  restartPregunta(){
+    this.preguntaHecha='';
   }
 
   /* ----------------------------------RESPUESTAS----------------------------------------------- */
@@ -186,6 +198,7 @@ export class ForoComponent implements OnInit {
     this.respuestaForm.setValue({respuesta:this.respuestaEditar})
     const formValue = this.respuestaForm.value; 
     this.firestoreService.editarRespuesta(id,formValue);  
+    this.respuestaEditar='Editar respuesta';
   }
 
 

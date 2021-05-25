@@ -22,6 +22,7 @@ export class GuionesComponent implements OnInit {
   cargando:boolean=true;
   tituloProyecto:string='1. Agregar Titulo Proyecto aqui';
   actualizarTitulo:string='Digite titulo Nuevo';
+  logo:string='../../../assets/Logotipo.png';
 
 
   constructor(private authSvc: AuthService, private firestoreService: FirestoreService, private readonly firestore: AngularFirestore,
