@@ -184,9 +184,19 @@
                         <div class="row mt-4 d-flex justify-content-center">
                           <button (click)="goToLink(file.downloadURL)" type="button" class="btn btn-primary btn-sm " >Ver video en tamaño original</button>
                         </div>
-                      </div>
-                      
-                      
+                      </div>                  
+                    </div>
+
+                    <div class="txt-negro d-flex justify-content-center" *ngIf="file.tipo === 'audio/mpeg'" >
+                      <div class="container">
+                        <div class="row d-flex justify-content-center">
+                          <audio controls>
+                            <source [src]="file.downloadURL" type="audio/mpeg">
+                          </audio>
+                          
+                        </div>
+                        
+                      </div>                  
                     </div>
 
                   </div>
