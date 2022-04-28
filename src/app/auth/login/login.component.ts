@@ -14,8 +14,10 @@ export class LoginComponent implements OnInit {
     email: new FormControl(''),
     password: new FormControl(''),
   })
-
-  constructor(private authSvc: AuthService, private router: Router) { }
+  registroInvalido:boolean = false; 
+  constructor(private authSvc: AuthService, private router: Router) {
+    this.registroInvalido=false;
+   }
 
   ngOnInit(): void { }
 
@@ -27,6 +29,7 @@ export class LoginComponent implements OnInit {
     }
    }
    catch(error){
+    this.registroInvalido=true;
      console.log(error);
    }
   }
@@ -39,12 +42,24 @@ export class LoginComponent implements OnInit {
      if(user){
       window.open('/home', "_self");
      }
+     else{
+      this.registroInvalido=true;
+     }
     }
 
     catch(error){
+      this.registroInvalido=true;
       console.log(error)
     }
 
   }
+
+  redireccionar(){
+
+    this.router.navigate(['/login']);
+    console.log("Redireccionado!!");
+    window.location.reload();
+     
+   }
 
 }
