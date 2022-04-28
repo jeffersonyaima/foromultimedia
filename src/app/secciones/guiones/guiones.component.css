@@ -403,6 +403,7 @@ video{
     height: 60%;
     width: 60%;
   }
+
   
   .item{
     border-radius: 5%;
@@ -428,14 +429,14 @@ video{
     background:#98D3D4 ;
     background-size: cover;
     background-position: center;
-    width: 50%;
+  width: 50%;
     height: auto;
    
    }
 
    #pantalla{
     height: 100vh;
-  width: 100%;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     font-family: 'Poppins bold', sans-serif
